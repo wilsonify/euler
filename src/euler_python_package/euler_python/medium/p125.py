@@ -1,0 +1,20 @@
+
+import itertools
+
+
+def problem125():
+    nums = set()
+    for i in range(1, 10001):
+        sigma = i * i
+        for j in itertools.count(i + 1):
+            sigma += j * j
+            if sigma >= 100000000:
+                break
+            s = str(sigma)
+            if s == s[:: -1]:  # Is palindrome
+                nums.add(sigma)
+    return (sum(nums))
+
+
+if __name__ == "__main__":
+    print(problem125())
