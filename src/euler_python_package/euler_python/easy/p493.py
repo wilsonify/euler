@@ -1,53 +1,63 @@
+"""
+problem 493
+"""
+import fractions
 
-# 
-# 
-#
-#
+import math
+
 from euler_python.utils import eulerlib
-import fractions, math
 
 
 def problem493():
-    NUM_COLORS = 7
-    BALLS_PER_COLOR = 10
-    NUM_PICKED = 20
-    DECIMALS = 9
+    """
+    :return:
+    """
+    num_colors = 7
+    balls_per_color = 10
+    num_picked = 20
+    decimals = 9
 
     numerator = [0]
 
     def explore(remain, limit, history):
         if remain == 0:
             hist = list(history)
-            while len(hist) < NUM_COLORS:
+            while len(hist) < num_colors:
                 hist.append(0)
 
-            histogram = [0] * (BALLS_PER_COLOR + 1)
-            for x in hist:
-                histogram[x] += 1
+            histogram = [0] * (balls_per_color + 1)
+            for _ in hist:
+                histogram[_] += 1
 
-            count = math.factorial(NUM_COLORS)
-            for x in histogram:
-                count = divide_exactly(count, math.factorial(x))
+            count = math.factorial(num_colors)
+            for _ in histogram:
+                count = divide_exactly(count, math.factorial(_))
 
-            for x in hist:
-                count *= eulerlib.binomial(BALLS_PER_COLOR, x)
+            for _ in hist:
+                count *= eulerlib.binomial(balls_per_color, _)
 
             distinctcolors = len(history)
             numerator[0] += count * distinctcolors
 
-        elif len(history) < NUM_COLORS:
+        elif len(history) < num_colors:
             for i in range(min(limit, remain), 0, -1):
                 history.append(i)
                 explore(remain - i, i, history)
                 history.pop()
 
-    explore(NUM_PICKED, BALLS_PER_COLOR, [])
-    denominator = eulerlib.binomial(NUM_COLORS * BALLS_PER_COLOR, NUM_PICKED)
+    explore(num_picked, balls_per_color, [])
+    denominator = eulerlib.binomial(num_colors * balls_per_color, num_picked)
     ans = fractions.Fraction(numerator[0], denominator)
-    return format_fraction(ans, DECIMALS)
+    return format_fraction(ans, decimals)
 
 
 def format_fraction(val, digits):
+    """
+    format_fraction
+    :param val:
+    :param digits:
+    :return:
+    """
     if digits <= 0:
         raise ValueError()
     if val < 0:
@@ -56,16 +66,22 @@ def format_fraction(val, digits):
     val *= scaler
     flr = val.numerator // val.denominator
     rem = val % 1
-    HALF = fractions.Fraction(1, 2)
-    if rem > HALF or (rem == HALF and flr % 2 == 1):
+    half = fractions.Fraction(1, 2)
+    if rem > half or (rem == half and flr % 2 == 1):
         flr += 1
     return "{}.{}".format(flr // scaler, str(flr % scaler).zfill(digits))
 
 
-def divide_exactly(x, y):
-    if x % y != 0:
+def divide_exactly(input_x, input_y):
+    """
+    divide_exactly
+    :param input_x:
+    :param input_y:
+    :return:
+    """
+    if input_x % input_y != 0:
         raise ValueError("Not divisible")
-    return x // y
+    return input_x // input_y
 
 
 if __name__ == "__main__":
