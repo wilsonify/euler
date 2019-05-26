@@ -14,7 +14,7 @@ def problem169():
     return ans
 
 
-@eulerlib.memoize
+@eulerlib.Memoize
 def count_ways(number, exponent, repetitions):
     if exponent < 0:
         return 1 if number == 0 else 0

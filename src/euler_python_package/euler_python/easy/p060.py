@@ -41,7 +41,7 @@ def problem060():
             return None
 
     # Tests whether concat(primes[x], primes[y]) is a prime number, with memoization.
-    @eulerlib.memoize
+    @eulerlib.Memoize
     def is_concat_prime(x, y):
         return is_prime(int(str(primes[x]) + str(primes[y])))
 

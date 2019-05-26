@@ -7,7 +7,7 @@ def problem151():
     return "{:.6f}".format(ans)
 
 
-@eulerlib.memoize
+@eulerlib.Memoize
 def get_expected_singles(state):
     result = 0.0
     if len(state) > 0:

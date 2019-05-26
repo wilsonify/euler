@@ -34,7 +34,7 @@ def problem047():
     return ans
 
 
-@eulerlib.memoize
+@eulerlib.Memoize
 def count_distinct_prime_factors(n):
     count = 0
     while n > 1:

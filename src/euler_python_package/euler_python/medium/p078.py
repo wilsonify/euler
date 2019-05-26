@@ -54,7 +54,7 @@ def problem078():
             item += partitions[i - index] * sign
             item %= MODULUS
 
-        # Check or memoize the number
+        # Check or Memoize the number
         if item == 0:
             return (i)
         partitions.append(item)

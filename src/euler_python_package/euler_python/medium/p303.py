@@ -55,7 +55,7 @@ def problem303():
             feasible.append(cur)
             i += 1
 
-        # Construct the smallest solution using the memoized table
+        # Construct the smallest solution using the Memoized table
         # Run time of O(len(feasible)) bigint operations
         result = 0
         remainder = 0  # Modulo n

@@ -13,7 +13,7 @@ def problem178():
 # Returns the number of pandigital step numbers such that each
 # number is 'digits' long, starts with the digit 'head' (can be 0),
 # and the union of all the digits equals the interval [low, high].
-@eulerlib.memoize
+@eulerlib.Memoize
 def count_step_pandigital(digits, head, low, high):
     assert digits >= 0
     assert low <= head <= high

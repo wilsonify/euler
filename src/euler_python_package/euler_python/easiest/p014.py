@@ -34,7 +34,7 @@ def problem014():
     return ans
 
 
-@eulerlib.memoize
+@eulerlib.Memoize
 def collatz_chain_length(x):
     if x == 1:
         return 1
