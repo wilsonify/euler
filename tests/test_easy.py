@@ -13,7 +13,7 @@ def test_smoke():
     print('is it on fire?')
 
 
-@pytest.mark.slow
+@pytest.mark.skip(reason='slow')
 def test_problem_51(answer):
     """
     test_problem_51(answer)
@@ -36,6 +36,7 @@ def test_problem_54(answer):
     assert output == expected_output
 
 
+@pytest.mark.skip(reason='slow')
 def test_problem_60(answer):
     """
     test_problem_60(answer)
@@ -69,6 +70,7 @@ def test_problem_62(answer):
     assert output == expected_output
 
 
+@pytest.mark.skip(reason='slow')
 def test_problem_64(answer):
     """
     test_problem_64(answer)
@@ -91,6 +93,7 @@ def test_problem_65(answer):
     assert output == expected_output
 
 
+@pytest.mark.skip(reason='slow')
 def test_problem_69(answer):
     """
     test_problem_69(answer)
@@ -102,6 +105,7 @@ def test_problem_69(answer):
     assert output == expected_output
 
 
+@pytest.mark.skip(reason='slow')
 def test_problem_70(answer):
     """
     test_problem_70(answer)
@@ -135,6 +139,7 @@ def test_problem_72(answer):
     assert output == expected_output
 
 
+@pytest.mark.skip(reason='slow')
 def test_problem_73(answer):
     """
     test_problem_73(answer)
@@ -146,6 +151,7 @@ def test_problem_73(answer):
     assert output == expected_output
 
 
+@pytest.mark.skip(reason='slow')
 def test_problem_74(answer):
     """
     test_problem_74(answer)
@@ -201,6 +207,7 @@ def test_problem_82(answer):
     assert output == expected_output
 
 
+@pytest.mark.skip(reason='slow')
 def test_problem_85(answer):
     """
     test_problem_85(answer)
@@ -322,6 +329,7 @@ def test_problem_346(answer):
     assert output == expected_output
 
 
+@pytest.mark.skip(reason='slow')
 def test_problem_347(answer):
     """
     test_problem_347(answer)
@@ -333,6 +341,7 @@ def test_problem_347(answer):
     assert output == expected_output
 
 
+@pytest.mark.skip(reason='slow')
 def test_problem_357(answer):
     """
     test_problem_357(answer)
@@ -344,6 +353,7 @@ def test_problem_357(answer):
     assert output == expected_output
 
 
+@pytest.mark.skip(reason='slow')
 def test_problem_381(answer):
     """
     test_problem_381(answer)
@@ -355,6 +365,7 @@ def test_problem_381(answer):
     assert output == expected_output
 
 
+@pytest.mark.skip(reason='slow')
 def test_problem_387(answer):
     """
     test_problem_387(answer)
