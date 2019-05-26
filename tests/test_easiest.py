@@ -349,6 +349,17 @@ def test_problem_22(answer):
     assert output == expected_output
 
 
+def test_sum_non_abundant():
+    """
+    test Problem  test_problem_23(answer)
+    :return:
+    """
+    from euler_python.easiest import p023
+    output = p023.sum_non_abundant(24)
+    expected_output = 276
+    assert output == expected_output
+
+
 @pytest.mark.skip(reason='slow')
 def test_problem_23(answer):
     """
