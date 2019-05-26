@@ -204,6 +204,17 @@ def test_problem_11(answer):
     assert output == expected_output
 
 
+def test_triangle_number_factors():
+    """
+    test Problem  test_problem_12(answer)
+    :return:
+    """
+    from euler_python.easiest import p012
+    output = p012.triangle_number_factors(5)
+    expected_output = 28
+    assert output == expected_output
+
+
 @pytest.mark.skip(reason='slow')
 def test_problem_12(answer):
     """
