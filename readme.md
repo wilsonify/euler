@@ -1,3 +1,5 @@
+![Lines of Code](static/lines_of_code.svg) 
+![Coverage](static/code_coverage.svg)
 
 starting from https://github.com/nayuki/Project-Euler-solutions
 
@@ -7,7 +9,7 @@ organized by Difficulty from https://projecteuler.net/archives
 
 prioritized easy to hard	
 
-# install 
+# Install 
 
 ## environment
 
@@ -16,6 +18,7 @@ python3 -m virtualenv venv
 source venv/bin/activate
 ```
 
+## dependencies
 ```bash
 cd src/euler_python_package
 python -m pip install -r requirements.txt
@@ -25,10 +28,17 @@ or
 python -m pip install .
 ```
 
-# usage
-
+# Usage
+Within python, import the package
 ```python
 import euler_python
+euler_python.easy.p070.problem070()
+```
+or
+from shell, run the script
+```bash
+cd src/euler_python_package/euler_python/easy
+python p070.py
 ```
 
 # develop
