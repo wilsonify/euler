@@ -238,6 +238,17 @@ def test_problem_13(answer):
     assert output == expected_output
 
 
+def test_start_collatz_chain():
+    """
+    test Problem  test_problem_14(answer)
+    :return:
+    """
+    from euler_python.easiest import p014
+    output = p014.start_collatz_chain(15)
+    expected_output = 9
+    assert output == expected_output
+
+
 @pytest.mark.skip(reason='slow')
 def test_problem_14(answer):
     """
