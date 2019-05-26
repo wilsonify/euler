@@ -520,6 +520,17 @@ def test_problem_34(answer):
     assert output == expected_output
 
 
+def test_count_circular_primes():
+    """
+    test Problem  test_problem_35(answer)
+    :return:
+    """
+    from euler_python.easiest import p035
+    output = p035.count_circular_primes(1000)
+    expected_output = 25
+    assert output == expected_output
+
+
 @pytest.mark.skip(reason='slow')
 def test_problem_35(answer):
     """
