@@ -1,94 +1,95 @@
+"""
+library of utilities
+"""
 import array
 import math
-import sys
 
 
-def popcount(x):
+def popcount(input_x):
     """
     Hamming weight
 
-    :param x: non-negative integer
+    :param input_x: non-negative integer
     :return: the number of 1's in the binary representation of x
     """
-    return bin(x).count("1")
+    return bin(input_x).count("1")
 
 
-def sqrt(x):
+def sqrt(input_x):
     """
     Given integer x, this returns the integer floor(sqrt(x)).
-    :param x:
+    :param input_x:
     :return:
     """
-    assert x >= 0
+    assert input_x >= 0
     i = 1
-    while i * i <= x:
+    while i * i <= input_x:
         i *= 2
-    y = 0
+    intermediate_y = 0
     while i > 0:
-        if (y + i) ** 2 <= x:
-            y += i
+        if (intermediate_y + i) ** 2 <= input_x:
+            intermediate_y += i
         i //= 2
-    return y
+    return intermediate_y
 
 
-def is_square(x):
+def is_square(input_x):
     """
     # Tests whether x is a perfect square, for any integer x.
-    :param x:
+    :param input_x:
     :return:
     """
-    if x < 0:
+    if input_x < 0:
         return False
-    y = sqrt(x)
-    return y * y == x
+    intermediate_y = sqrt(input_x)
+    return intermediate_y * intermediate_y == input_x
 
 
-def is_prime(x):
+def is_prime(input_x):
     """
     # Tests whether the given integer is a prime number.
-    :param x:
+    :param input_x:
     :return:
     """
-    if x <= 1:
+    if input_x <= 1:
         return False
-    elif x <= 3:
+    if input_x <= 3:
         return True
-    elif x % 2 == 0:
+    if input_x % 2 == 0:
         return False
-    else:
-        for i in range(3, sqrt(x) + 1, 2):
-            if x % i == 0:
-                return False
-        return True
+    for i in range(3, sqrt(input_x) + 1, 2):
+        if input_x % i == 0:
+            return False
+    return True
 
 
-def list_primality(n):
+def list_primality(input_n):
     """
     Sieve of Eratosthenes
 
     For 0 <= i <= n, result[i] is True if i is a prime number, False otherwise.
 
-    :param n: int
+    :param input_n: int
     :return: a list of True and False indicating whether each number is prime.
     """
-    result = [True] * (n + 1)
+    result = [True] * (input_n + 1)
     result[0] = result[1] = False
-    for i in range(sqrt(n) + 1):
+    for i in range(sqrt(input_n) + 1):
         if result[i]:
             for j in range(i * i, len(result), i):
                 result[j] = False
     return result
 
 
-def list_primes(n):
+def list_primes(input_n):
     """
     # Returns all the prime numbers less than or equal to n, in ascending order.
     # For example: listPrimes(97) = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, ..., 83, 89, 97].
 
-    :param n:
+    :param input_n:
     :return:
     """
-    return [i for (i, isprime) in enumerate(list_primality(n)) if isprime]
+    return [i for (i, isprime) in enumerate(list_primality(input_n)) if isprime]
 
 
 def prime_generator(limit):
@@ -103,40 +104,40 @@ def prime_generator(limit):
     # Sieve of Eratosthenes, storing only odd numbers starting at 3
     isprime = array.array("B", b"\x01" * ((limit - 1) // 2))
     sieveend = sqrt(limit)
-    for i in range(len(isprime)):
+    for i, _ in enumerate(isprime):
         if isprime[i] == 1:
-            p = i * 2 + 3
-            yield p
+            prime_p = i * 2 + 3
+            yield prime_p
             if i <= sieveend:
-                for j in range((p * p - 3) >> 1, len(isprime), p):
+                for j in range((prime_p * prime_p - 3) >> 1, len(isprime), prime_p):
                     isprime[j] = 0
 
 
-def list_smallest_prime_factors(n):
+def list_smallest_prime_factors(input_n):
     """
 
-    :param n:
+    :param input_n:
     :return:
     """
-    result = [None] * (n + 1)
-    limit = sqrt(n)
+    result = [None] * (input_n + 1)
+    limit = sqrt(input_n)
     for i in range(2, len(result)):
         if result[i] is None:
             result[i] = i
             if i <= limit:
-                for j in range(i * i, n + 1, i):
+                for j in range(i * i, input_n + 1, i):
                     if result[j] is None:
                         result[j] = i
     return result
 
 
-def list_totients(n):
+def list_totients(input_n):
     """
 
-    :param n:
+    :param input_n:
     :return:
     """
-    result = list(range(n + 1))
+    result = list(range(input_n + 1))
     for i in range(2, len(result)):
         if result[i] == i:  # i is prime
             for j in range(i, len(result), i):
@@ -144,39 +145,40 @@ def list_totients(n):
     return result
 
 
-def binomial(n, k):
+def binomial(input_n, input_k):
     """
 
-    :param n:
-    :param k:
+    :param input_n:
+    :param input_k:
     :return:
     """
-    assert 0 <= k <= n
-    return math.factorial(n) // (math.factorial(k) * math.factorial(n - k))
+    assert 0 <= input_k <= input_n
+    return math.factorial(input_n) // (math.factorial(input_k) * math.factorial(input_n - input_k))
 
 
 # Returns x^-1 mod m. Note that x * x^-1 mod m = x^-1 * x mod m = 1.
-def reciprocal_mod(x, m):
+def reciprocal_mod(input_x, input_m):
     """
     # Based on a simplification of the extended Euclidean algorithm
 
-    :param x:
-    :param m:
+    :param input_x:
+    :param input_m:
     :return:
     """
-    assert 0 <= x < m
+    assert 0 <= input_x < input_m
 
-    y = x
-    x = m
-    a = 0
-    b = 1
-    while y != 0:
-        a, b = b, a - x // y * b
-        x, y = y, x % y
-    if x == 1:
-        return a % m
-    else:
-        raise ValueError("Reciprocal does not exist")
+    intermediate_y = input_x
+    input_x = input_m
+    intermediate_a = 0
+    intermediate_b = 1
+    while intermediate_y != 0:
+        intermediate_a, \
+        intermediate_b = intermediate_b, \
+                         intermediate_a - input_x // intermediate_y * intermediate_b
+        input_x, intermediate_y = intermediate_y, input_x % intermediate_y
+    if input_x == 1:
+        return intermediate_a % input_m
+    raise ValueError("Reciprocal does not exist")
 
 
 def next_permutation(arr):
@@ -202,19 +204,25 @@ def next_permutation(arr):
     return True
 
 
-class memoize(object):
+class Memoize:
     """
-    # Decorator. The underlying function must take only positional arguments, no keyword arguments.
+    # Decorator.
     """
 
     def __init__(self, func):
         self.func = func
         self.cache = {}
 
-    def __call__(self, *args):
+    def __call__(self, *args, **kwargs):
         if args in self.cache:
             return self.cache[args]
-        else:
-            val = self.func(*args)
-            self.cache[args] = val
-            return val
+        val = self.func(*args, **kwargs)
+        self.cache[args] = val
+        return val
+
+    def get_cache(self):
+        """
+        access method
+        :return:
+        """
+        return self.cache
