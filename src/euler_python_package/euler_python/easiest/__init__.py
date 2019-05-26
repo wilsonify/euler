@@ -1,3 +1,6 @@
+"""
+This module represents the least difficult project euler problems
+"""
 __all__ = [
     'p001',
     'p002',
@@ -61,4 +64,5 @@ __all__ = [
     'p079',
     'p092',
     'p097',
+    'p206',
 ]
