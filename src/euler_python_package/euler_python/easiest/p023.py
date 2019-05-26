@@ -20,7 +20,7 @@ sum of two abundant numbers.
 """
 
 
-def problem023():
+def sum_non_abundant(limit=28124):
     """
     A perfect number is a number for which the sum of its proper divisors is exactly equal to the number.
     For example, the sum of the proper divisors of 28 would be 1 + 2 + 4 + 7 + 14 = 28,
@@ -38,10 +38,9 @@ def problem023():
     even though it is known that the greatest number
     that cannot be expressed as the sum of two abundant numbers is less than this limit.
 
-    Find the sum of all the positive integers which cannot be written as the sum of two abundant numbers.
+
     """
 
-    limit = 28124
     divisor_sum = [0] * limit
     for i in range(1, limit):
         for j in range(i * 2, limit, i):
@@ -58,6 +57,14 @@ def problem023():
 
     ans = sum(i for (i, x) in enumerate(expressible) if not x)
     return ans
+
+
+def problem023():
+    """
+    Find the sum of all the positive integers which cannot be written as the sum of two abundant numbers.
+    :return:
+    """
+    return sum_non_abundant(28124)
 
 
 if __name__ == "__main__":
