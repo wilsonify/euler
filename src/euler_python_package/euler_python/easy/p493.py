@@ -48,7 +48,7 @@ def problem493():
     explore(num_picked, balls_per_color, [])
     denominator = eulerlib.binomial(num_colors * balls_per_color, num_picked)
     ans = fractions.Fraction(numerator[0], denominator)
-    return format_fraction(ans, decimals)
+    return float(format_fraction(ans, decimals))
 
 
 def format_fraction(val, digits):
