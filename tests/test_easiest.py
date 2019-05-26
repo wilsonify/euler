@@ -405,6 +405,17 @@ def test_problem_26(answer):
     assert output == expected_output
 
 
+def test_product_of_coefficients():
+    """
+    test Problem  test_problem_27(answer)
+    :return:
+    """
+    from euler_python.easiest import p027
+    output = p027.product_of_coefficients(100)
+    expected_output = -1455
+    assert output == expected_output
+
+
 @pytest.mark.skip(reason='slow')
 def test_problem_27(answer):
     """
