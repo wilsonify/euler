@@ -497,6 +497,17 @@ def test_problem_33(answer):
     assert output == expected_output
 
 
+def test_sum_factorial_digits():
+    """
+    test Problem  test_problem_34(answer)
+    :return:
+    """
+    from euler_python.easiest import p034
+    output = p034.sum_factorial_digits(upper_bound=10000)
+    expected_output = 145
+    assert output == expected_output
+
+
 @pytest.mark.skip(reason='slow')
 def test_problem_34(answer):
     """
