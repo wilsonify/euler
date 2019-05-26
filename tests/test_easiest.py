@@ -13,7 +13,6 @@ def test_smoke():
     print('is it on fire?')
 
 
-@pytest.mark.fast
 def test_sum_multiples_of_3_or_5_below_n():
     """
     test Problem  test_sum_multiples_of_3_or_5_below_n()
@@ -26,7 +25,6 @@ def test_sum_multiples_of_3_or_5_below_n():
     assert output == expected_output
 
 
-@pytest.mark.skip(reason='slow')
 def test_problem_1(answer):
     """
     test Problem  test_problem_1(answer)
@@ -42,7 +40,6 @@ def test_problem_1(answer):
     assert output == expected_output
 
 
-@pytest.mark.fast
 def test_sum_even_fib_below():
     """
     test Problem  test_sum_even_fib_below()
@@ -54,7 +51,6 @@ def test_sum_even_fib_below():
     assert output == expected_output
 
 
-@pytest.mark.skip(reason='slow')
 def test_problem_2(answer):
     """
     test Problem  test_problem_2(answer)
@@ -66,7 +62,6 @@ def test_problem_2(answer):
     assert output == expected_output
 
 
-@pytest.mark.fast
 def test_smallest_prime_factor():
     """
     test Problem  test_smallest_prime_factor()
@@ -79,7 +74,6 @@ def test_smallest_prime_factor():
     assert output == expected_output
 
 
-@pytest.mark.fast
 def test_largest_prime_factor():
     """
     test Problem  test_largest_prime_factor()
@@ -91,7 +85,6 @@ def test_largest_prime_factor():
     assert output == expected_output
 
 
-@pytest.mark.skip(reason='slow')
 def test_problem_3(answer):
     """
     test Problem  test_problem_3(answer)
@@ -103,7 +96,6 @@ def test_problem_3(answer):
     assert output == expected_output
 
 
-@pytest.mark.fast
 def test_largest_palindrome_from_product_of_two_n_digit_numbers():
     """
     test Problem  test_largest_palindrome_from_product_of_two_n_digit_numbers()
@@ -115,7 +107,6 @@ def test_largest_palindrome_from_product_of_two_n_digit_numbers():
     assert output == expected_output
 
 
-@pytest.mark.skip(reason='slow')
 def test_problem_4(answer):
     """
     test Problem  test_problem_4(answer)
@@ -447,6 +438,17 @@ def test_problem_29(answer):
     from euler_python.easiest import p029
     output = p029.problem029()
     expected_output = answer['Problem 029']
+    assert output == expected_output
+
+
+def test_sum_fifth_power_digits():
+    """
+    test Problem  test_problem_30(answer)
+    :return:
+    """
+    from euler_python.easiest import p030
+    output = p030.sum_fifth_power_digits(10000)
+    expected_output = 8301
     assert output == expected_output
 
 
