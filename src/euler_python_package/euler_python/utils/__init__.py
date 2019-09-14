@@ -1,4 +1,4 @@
 """
 utility libraries
 """
-__all__ = ['eulerlib']
+__all__ = ["eulerlib"]

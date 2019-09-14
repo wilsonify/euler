@@ -1,4 +1,3 @@
-
 import itertools
 
 
@@ -31,7 +30,7 @@ def problem112():
     for i in itertools.count(1):
         s = str(i)
         t = "".join(sorted(s))
-        if s != t and s[:: -1] != t:
+        if s != t and s[::-1] != t:
             count += 1  # i is bouncy
         if count * 100 == 99 * i:
             return i

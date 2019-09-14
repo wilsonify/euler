@@ -1,4 +1,3 @@
-
 import random
 
 
@@ -143,12 +142,11 @@ def problem084():
         visitcounts[location] += 1
 
     temp = sorted(enumerate(visitcounts), key=(lambda ic: -ic[1]))
-    ans = "".join("{:02d}".format(i) for (i, c) in temp[: 3])
+    ans = "".join("{:02d}".format(i) for (i, c) in temp[:3])
     return int(ans)
 
 
 class CardDeck(object):
-
     def __init__(self, size):
         self.cards = list(range(size))
         self.index = size

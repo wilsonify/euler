@@ -1,14 +1,15 @@
-
-
 #
 #
-from euler_python.utils import eulerlib
 import sys
+
+from euler_python.utils import eulerlib
 
 
 def problem188():
     x, y, m = 1777, 1855, 10 ** 8
-    sys.setrecursionlimit(y + 30)  # Because the default recursion limit of 1000 is insufficient
+    sys.setrecursionlimit(
+        y + 30
+    )  # Because the default recursion limit of 1000 is insufficient
     ans = tetration_mod(x, y, m)
     return ans
 

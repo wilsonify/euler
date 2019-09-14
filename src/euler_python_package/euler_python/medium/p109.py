@@ -1,4 +1,3 @@
-
 def problem109():
     # Both lists are orderless but duplicates are important; they are sort of like multisets
     points = [i * j for i in range(1, 21) for j in range(1, 4)] + [25, 50]
@@ -28,7 +27,7 @@ def problem109():
             for p in doublepoints:
                 if p <= remainingpoints:
                     checkouts += calc_ways(throws, remainingpoints - p, len(points) - 1)
-    return (checkouts)
+    return checkouts
 
 
 if __name__ == "__main__":

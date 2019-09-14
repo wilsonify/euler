@@ -1,12 +1,13 @@
-
 from euler_python.utils import eulerlib
 
 
 def problem178():
     LIMIT = 40
-    ans = sum(count_step_pandigital(digits, head, 0, 9)
-              for digits in range(LIMIT + 1)
-              for head in range(1, 10))
+    ans = sum(
+        count_step_pandigital(digits, head, 0, 9)
+        for digits in range(LIMIT + 1)
+        for head in range(1, 10)
+    )
     return ans
 
 

@@ -1,9 +1,8 @@
-
-
 #
 #
-from euler_python.utils import eulerlib
 import itertools
+
+from euler_python.utils import eulerlib
 
 
 # Model the problem as a Markov process, and solve using dynamic programming
@@ -15,7 +14,9 @@ def problem280():
 
     # Run the simulation
     ans = 0.0
-    probs = {State.START_STATE.id: 1.0}  # The current probability of being in each state
+    probs = {
+        State.START_STATE.id: 1.0
+    }  # The current probability of being in each state
     for i in itertools.count(1):
         # Note: The done state has no outgoing neighbors,
         # so its probability disappears in the next iteration
@@ -94,8 +95,15 @@ class State(object):
         result.add(State(done, x, y, seed))
 
 
-State.START_STATE = State(False, 2, 2, [False, False, False, False, False, True, True, True, True, True, False])
-State.DONE_STATE = State(True, 0, 0, [True, True, True, True, True, False, False, False, False, False, False])
+State.START_STATE = State(
+    False,
+    2,
+    2,
+    [False, False, False, False, False, True, True, True, True, True, False],
+)
+State.DONE_STATE = State(
+    True, 0, 0, [True, True, True, True, True, False, False, False, False, False, False]
+)
 
 if __name__ == "__main__":
     print(problem280())

@@ -1,10 +1,10 @@
-
-# 
-# 
 #
 #
-from euler_python.utils import eulerlib
+#
+#
 import math
+
+from euler_python.utils import eulerlib
 
 
 def problem222():
@@ -37,15 +37,20 @@ def problem222():
                     if newsetofspheres & (1 << i) == 0:
                         continue
                     # The sqrt() here is what makes the entire computation not guaranteed to be accurate
-                    temp = math.sqrt((sphereradii[i] + sphereradii[currentsphereindex] - 50000) * 200000)
+                    temp = math.sqrt(
+                        (sphereradii[i] + sphereradii[currentsphereindex] - 50000)
+                        * 200000
+                    )
                     temp += find_minimum_length(i, newsetofspheres)
                     result = min(temp, result)
             minlength[currentsphereindex][setofspheres] = result
         return minlength[currentsphereindex][setofspheres]
 
-    ans = min((find_minimum_length(i, (1 << NUM_SPHERES) - 1) + sphereradii[i])
-              for i in range(NUM_SPHERES))
-    return (int(round(ans)))
+    ans = min(
+        (find_minimum_length(i, (1 << NUM_SPHERES) - 1) + sphereradii[i])
+        for i in range(NUM_SPHERES)
+    )
+    return int(round(ans))
 
 
 if __name__ == "__main__":

@@ -1,4 +1,3 @@
-
 import itertools
 
 from euler_python.utils import eulerlib

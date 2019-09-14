@@ -1,32 +1,32 @@
-
-# 
-# 
-# 
 #
-from euler_python.utils import eulerlib
+#
+#
+#
 import itertools
+
+from euler_python.utils import eulerlib
 
 # Given a range of integers [0, n), we can bulk-calculate how many ways
 # each integer can be expressed as a sum of a cube and a square.
-# 
+#
 # Start by initializing an array of length n with all zeros.
 # Next, write a two-level loop to explore all the cubes i^3
 # and squares j^2 such that their sum is less than n:
-# 
+#
 #   ways = new int[n];  // Initially all zero
 #   for (i = 2; i^3 < n; i++) {
 #     for (j = 2; i^3 + j^2 < n; j++) {
 #       ways[i^3 + j^2]++;
 #     }
 #   }
-# 
+#
 # The array creation takes O(n) time. The outer loop runs O(n^(1/3)) iterations,
 # the inner loop runs O(n^(1/2)) iterations per outer loop, hence the inner loop body
 # runs O(n^(5/6)) iterations. Thus the whole process runs in O(n) time and memory.
-# 
+#
 # Finally we iterate forward through the array, selecting numbers that
 # are palindromes and can be summed in the target number of ways.
-# 
+#
 # If the answer is not found in our range [0, n), then we increase the range and search
 # again. If we multiply n by some factor (say 2 or 10), then the geometric series ensures
 # that the total work we do is O(n) with respect to the magnitude of the final answer.
@@ -76,7 +76,7 @@ def try_search(limit):
 
 def is_palindrome(x):
     s = str(x)
-    return s == s[:: -1]
+    return s == s[::-1]
 
 
 if __name__ == "__main__":

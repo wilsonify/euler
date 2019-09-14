@@ -1,13 +1,10 @@
-
-
-
 # A straightforward solution would look like this:
 #   for c in range(2, LIMIT):
 #      for a in range(1, c):
 #        b = c - a
 #        if is_abc_hit(a, b, c):
 #          ans += c
-# 
+#
 # Here are some observations that lead to optimizations:
 # - For each integer n >= 2, we have 2 <= rad(n) <= n.
 # - By Euclid's GCD algorithm, gcd(c,b) = gcd(a+b,b) = gcd(a,b) = gcd(a,a+b) = gcd(a,c).

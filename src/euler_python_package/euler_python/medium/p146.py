@@ -1,4 +1,3 @@
-
 from euler_python.utils import eulerlib
 
 
@@ -11,12 +10,12 @@ from euler_python.utils import eulerlib
 # - If n = 4 mod 5, then n^2 + 9 = 0 mod 5 which is composite.
 # - Thus we require n = 0 mod 5.
 # - Taking these two together and using the Chinese remainder theorem (CRT), we require n = 0 mod 10.
-# 
+#
 # For each value of n, after we generate the set {n^2 + 1, n^2 + 3, ..., n^2 + 27}, it's more efficient to take each
 # prime number and test whether it divides any number, rather than take each number and test it against all prime numbers.
 # This is because some numbers in this set are prime so the latter method tests some numbers against all the primes;
 # the former method will bail out early as soon as ~any~ number in the set has a small prime factor.
-# 
+#
 # The rest of the algorithm is implemented straightforwardly.
 def problem146():
     LIMIT = 150000000
@@ -34,9 +33,7 @@ def problem146():
 
         # Test that each number is prime.
         # Note: The nesting of the loops can be reversed, but this way is much faster.
-        if any((x != p and x % p == 0)
-               for p in primes
-               for x in temp):
+        if any((x != p and x % p == 0) for p in primes for x in temp):
             return False
 
         # Test that each number that is not an increment is composite.

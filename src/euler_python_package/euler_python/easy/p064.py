@@ -1,8 +1,9 @@
 #
-# 
+#
 #
 #
 import math
+
 from euler_python.utils import eulerlib
 
 
@@ -74,7 +75,12 @@ def problem064():
        How many continued fractions for N ≤ 10000 have an odd period?
     """
     ans = sum(
-        1 for i in range(1, 10001) if (not eulerlib.is_square(i) and get_sqrt_continued_fraction_period(i) % 2 == 1))
+        1
+        for i in range(1, 10001)
+        if (
+                not eulerlib.is_square(i) and get_sqrt_continued_fraction_period(i) % 2 == 1
+        )
+    )
     return ans
 
 
@@ -91,7 +97,6 @@ def get_sqrt_continued_fraction_period(n):
 
 # Represents (a + b * sqrt(d)) / c. d must not be a perfect square.
 class QuadraticSurd(object):
-
     def __init__(self, a, b, c, d):
         if c == 0:
             raise ValueError()
@@ -119,14 +124,16 @@ class QuadraticSurd(object):
             self.a * other.c - other.a * self.c,
             self.b * other.c - other.b * self.c,
             self.c * other.c,
-            self.d)
+            self.d,
+        )
 
     def reciprocal(self):
         return QuadraticSurd(
             -self.a * self.c,
             self.b * self.c,
             self.b * self.b * self.d - self.a * self.a,
-            self.d)
+            self.d,
+        )
 
     def floor(self):
         temp = eulerlib.sqrt(self.b * self.b * self.d)
@@ -138,8 +145,12 @@ class QuadraticSurd(object):
         return temp // self.c
 
     def __eq__(self, other):
-        return self.a == other.a and self.b == other.b \
-               and self.c == other.c and self.d == other.d
+        return (
+                self.a == other.a
+                and self.b == other.b
+                and self.c == other.c
+                and self.d == other.d
+        )
 
     def __ne__(self, other):
         return not (self == other)

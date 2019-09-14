@@ -15,7 +15,7 @@ def problem076():
     limit = 100
     partitions = []
     for i in range(limit + 1):
-        partitions.append([0, ] * (limit + 1))
+        partitions.append([0] * (limit + 1))
         for j in reversed(range(limit + 1)):
             if j == i:
                 val = 1

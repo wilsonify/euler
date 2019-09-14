@@ -1,10 +1,9 @@
-
 from euler_python.utils import eulerlib
 
 
 # If a^2 = a mod n, then this is also true for any m that divides n.
 # Let's focus on the moduli that are prime powers, p^k.
-# 
+#
 # Claim: The only solutions of a^2 = a mod p^k are a = 0, 1 mod p^k.
 # Proof:
 #   First note that a = 0 mod p^k is always a solution. Now consider the case of 0 < a < p^k.
@@ -15,7 +14,7 @@ from euler_python.utils import eulerlib
 #   Multiply both sides by b^-2 to get b^-1 = p^j mod p^(k-j).
 #   b is coprime with p, so b is not a power of p unless j = 0, i.e. p^j = 1 = b.
 #   So when a != 0, a = 1 is the only solution.
-# 
+#
 # If we factor n as a product of prime powers, i.e. n = p0^k0 * p1^k1 * ... where
 # all the p's are distinct (and thus all the k's are as large as possible), then we have
 # a system of congruences {a = 0,1 mod p0^k0; a = 0,1 mod p1^k1; ...}.
@@ -48,8 +47,9 @@ def problem407():
             # Use Chinese remainder theorem; cache parts of it
             recip = eulerlib.reciprocal_mod(q % modulus, modulus)
             newmod = q * modulus
-            solns = [((0 + (x) * recip * q) % newmod) for x in solns] + \
-                    [((1 + (x - 1) * recip * q) % newmod) for x in solns]
+            solns = [((0 + (x) * recip * q) % newmod) for x in solns] + [
+                ((1 + (x - 1) * recip * q) % newmod) for x in solns
+            ]
             modulus = newmod
 
         ans += max(solns)

@@ -1,4 +1,3 @@
-
 def problem191():
     NUM_DAYS = 30
     MAX_ABSENT = 2
@@ -6,7 +5,9 @@ def problem191():
 
     # num_prize_strings[i][j][k] is the number of prize strings of length i with
     # exactly j absences at the tail and exactly k lates in the whole string
-    num_prize_strings = create_nested_lists(0, NUM_DAYS + 1, MAX_ABSENT + 1, MAX_LATE + 1)
+    num_prize_strings = create_nested_lists(
+        0, NUM_DAYS + 1, MAX_ABSENT + 1, MAX_LATE + 1
+    )
     num_prize_strings[0][0][0] = 1
     for i in range(1, len(num_prize_strings)):
         for j in range(len(num_prize_strings[i])):
@@ -32,7 +33,9 @@ def create_nested_lists(value, *dimensions):
     elif len(dimensions) == 1:
         return [value] * dimensions[0]
     else:
-        return [create_nested_lists(value, *dimensions[1:]) for _ in range(dimensions[0])]
+        return [
+            create_nested_lists(value, *dimensions[1:]) for _ in range(dimensions[0])
+        ]
 
 
 if __name__ == "__main__":

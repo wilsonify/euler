@@ -1,34 +1,33 @@
-
 import itertools
 
 
 # This problem uses the concepts of https://en.wikipedia.org/wiki/Addition_chain
 # and https://en.wikipedia.org/wiki/Addition-chain_exponentiation .
-# 
+#
 # Definition: An addition chain is a finite sequence of integers {a_i} such that:
 # - a_0 = 1 (i.e. the head element is 1).
 # - For each index i (with 0 < i < length), there exists indices j and k such that 0 <= j <= k < i
 #   and a_i = a_j + a_k (i.e. each subsequent element is the sum of some two elements that come before it).
 # - The number of operations in an addition chain is equal to the length of the chain minus one.
-# 
+#
 # Example: {1, 2, 3, 6, 9, 11} is an addition chain because
 # 2 = 1 + 1, 3 = 1 + 2, 6 = 3 + 3, 9 = 3 + 6, 11 = 2 + 9.
 # This chain has length 6, and uses 5 addition operations.
-# 
+#
 # Note: A star chain or Brauer chain is an addition chain with the stronger condition that for each i > 0,
 # there exists an index j such that 0 <= j < i and a_i = a_{i-1} + a_j. However, a minimum-length star chain
 # might be longer than the minimum-length general addition chain. A counterexample is known for 12509;
 # the shortest addition chain that produces 12509 is shorter than the shortest star chain that produces it.
 # This is unfortunate because searching star chains is much faster than searching general addition chains.
-# 
+#
 # The overall strategy of this solution is to explore all addition chains by brute force using depth-first search.
 # We start with the base chain of {1}, progressively add elements that are the sum of some two earlier elements,
 # and backtrack at each stage. No memoization or breadth-first search is performed because the search space is large.
-# 
+#
 # An important detail is that we perform depth-limited search of the full search space, with depth = 1, 2, 3, etc.
 # This gives us the benefit of breadth-first search without its high memory usage - namely, the first time
 # we visit a sum of n, we can be sure that it has been reached with the smallest possible chain length.
-# 
+#
 # A crucial algorithmic optimization is that we only consider addition chains that are strictly increasing.
 # Clearly there is no benefit to producing a certain term twice within the same sequence (e.g. 2 + 2 = 4 and 1 + 3 = 4).
 # As for the increasing order, we argue that for every addition chain that isn't strictly increasing, it can be
@@ -40,7 +39,9 @@ def problem122():
     # Set up initial array of known/unknown minimum operation counts
     LIMIT = 200
     minoperations = [0, 0] + [None] * (LIMIT - 1)
-    numunknown = [LIMIT - 1]  # Use list instead of scalar to work around Python 2's broken scoping
+    numunknown = [
+        LIMIT - 1
+    ]  # Use list instead of scalar to work around Python 2's broken scoping
 
     # Recursively builds up chains and compares them to chain lengths already found.
     def explore_chains(chain, maxops):
@@ -70,7 +71,7 @@ def problem122():
     for ops in itertools.count(1):
         if numunknown[0] == 0:
             # Add up the results
-            return (sum(minoperations))
+            return sum(minoperations)
         explore_chains([1], ops)
 
 

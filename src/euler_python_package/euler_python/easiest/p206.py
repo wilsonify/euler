@@ -30,7 +30,7 @@ def problem206():
         n += 10
         add_10pow(ndigits, 1)
     # Now n2digits = n^2
-    return (n)
+    return n
 
 
 def is_concealed_square(n):

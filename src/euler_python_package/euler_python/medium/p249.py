@@ -1,4 +1,3 @@
-
 from euler_python.utils import eulerlib
 
 
@@ -9,7 +8,9 @@ def problem249():
     # Use dynamic programming. count[i] is the number of subsets of primes with the sum of i, modulo MODULUS.
     count = [0] * (LIMIT ** 2 // 2)
     count[0] = 1
-    s = 0  # Sum of all primes seen so far, and thus the highest index among nonzero entries in 'count'
+    s = (
+        0
+    )  # Sum of all primes seen so far, and thus the highest index among nonzero entries in 'count'
     for p in eulerlib.list_primes(LIMIT):
         for i in reversed(range(s + 1)):
             count[i + p] = (count[i + p] + count[i]) % MODULUS

@@ -1,4 +1,3 @@
-
 def problem160():
     ans = factorial_suffix(10 ** 12)
     return ans

@@ -1,16 +1,16 @@
-
-# 
-# 
 #
 #
-from euler_python.utils import eulerlib
+#
+#
 import itertools
+
+from euler_python.utils import eulerlib
 
 
 # Let's do mathematical analysis to drastically reduce the amount of
 # logic we need to implement and calculation the computer needs to do.
 # We begin with a couple of definitions.
-# 
+#
 # Ring number: Each cell belongs in a hexagonal ring,
 # numbered starting from 0 at the center like this:
 #               3
@@ -26,7 +26,7 @@ import itertools
 #       3       2       3
 #           3       3
 #               3
-# 
+#
 # Corner/edge cell: Within a ring, each cell is
 # either a corner cell or an edge cell, as shown:
 #               C
@@ -42,7 +42,7 @@ import itertools
 #       E       C       E
 #           E       E
 #               C
-# 
+#
 # Basic observations:
 # - Except for the degenerate ring 0, each ring k has 6k cells.
 #   The kth ring has exactly 6 corner cells and 6(k - 1) edge cells.
@@ -50,15 +50,15 @@ import itertools
 #   rings 0 and 1 because the existence of ring 0 breaks many patterns.
 # - Doing the PD calculation for rings 0 and 1 by hand (n = 1 to 7
 #   inclusive), we find that PD(n) = 3 for and only for n = 1, 2.
-# 
+#
 # Now let's analyze the characteristics of all cells in rings 2 or above.
 # It's hard to justify these assertions rigorously, but they are true from
 # looking at the spiral diagram.
-# 
+#
 # - Corner cells along the upward vertical direction and the edge cells
 #   immediately to the right of this vertical column are the most interesting,
 #   so we will save these cases for last.
-# 
+#
 # - Claim: Except for cells immediately right of the upward corner column,
 #   no edge cell satisfies PD(n) = 3. Proof: Take an arbitrary edge cell n
 #   not immediately to the right of the upward corner column...
@@ -78,7 +78,7 @@ import itertools
 #         11
 #     25      04
 #         12
-# 
+#
 # - Claim: No corner cell in the other 5 directions satisfies PD(n) = 3.
 #   Proof: Take an arbitrary corner cell n in the non-upward direction...
 #   - Two of its neighbors (in the same ring) have a difference of 1,
@@ -98,7 +98,7 @@ import itertools
 #         14
 #     28      30
 #         29
-# 
+#
 # - Now let's consider an arbitrary upward corner cell n in ring k, with k >= 2.
 #   We shall give variables to all its neighbors like this:
 #         d
@@ -131,7 +131,7 @@ import itertools
 #         08
 #     09      19
 #         02
-# 
+#
 # - Finally let's consider an arbitrary edge cell immediately to the right of the
 #   upward vertical column. Suppose the cell's value is n and it is in ring k,
 #   with k >= 2. Give variables to all its neighbors like this:
@@ -172,11 +172,11 @@ def problem128():
         if all(map(eulerlib.is_prime, (ring * 6 - 1, ring * 6 + 1, ring * 12 + 5))):
             count += 1
             if count == TARGET:
-                return (ring * (ring - 1) * 3 + 2)
+                return ring * (ring - 1) * 3 + 2
         if all(map(eulerlib.is_prime, (ring * 6 - 1, ring * 6 + 5, ring * 12 - 7))):
             count += 1
             if count == TARGET:
-                return (ring * (ring + 1) * 3 + 1)
+                return ring * (ring + 1) * 3 + 1
 
 
 if __name__ == "__main__":

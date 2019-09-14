@@ -1,4 +1,3 @@
-
 from euler_python.utils import eulerlib
 
 
@@ -16,7 +15,7 @@ def problem204():
                 product *= primes[primeindex]
             return result
 
-    return (count(0, 1))
+    return count(0, 1)
 
 
 if __name__ == "__main__":

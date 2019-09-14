@@ -1,4 +1,3 @@
-
 from euler_python.utils import eulerlib
 
 
@@ -52,7 +51,11 @@ def problem345():
                 if bit > setofcols:
                     break
                 if setofcols & bit != 0:
-                    result = max(MATRIX[startrow][col] + find_maximum_sum(startrow + 1, setofcols ^ bit), result)
+                    result = max(
+                        MATRIX[startrow][col]
+                        + find_maximum_sum(startrow + 1, setofcols ^ bit),
+                        result,
+                    )
                 col += 1
                 bit <<= 1
             maxsum[startrow][setofcols] = result

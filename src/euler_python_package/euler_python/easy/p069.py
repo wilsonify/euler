@@ -1,9 +1,10 @@
 #
-# 
 #
 #
-from euler_python.utils import eulerlib
+#
 import fractions
+
+from euler_python.utils import eulerlib
 
 
 def problem069():
@@ -43,7 +44,9 @@ def problem069():
     """
 
     totients = eulerlib.list_totients(10 ** 6)
-    ans = max(range(2, len(totients)), key=(lambda i: fractions.Fraction(i, totients[i])))
+    ans = max(
+        range(2, len(totients)), key=(lambda i: fractions.Fraction(i, totients[i]))
+    )
     return ans
 
 

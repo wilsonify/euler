@@ -1,21 +1,21 @@
 #
-# 
+#
 #
 #
 import fractions
-
 import math
+
 from euler_python.utils import eulerlib
 
 
 # Based on this insane theorem: Suppose D > 1 is an integer, non-perfect-square.
-# 
+#
 # Express sqrt(D) as the continued fraction (a0, a1, ..., a_{n-1}, (b0, b1, ..., b_{m-1})),
 # where the sequence of b's is the periodic part.
-# 
+#
 # Let p/q (in lowest terms) = (a0, a1, ..., a_{n-1}, b0, b1, ..., b_{m-2}).
 # (This is a truncation of the continued fraction with only one period minus the last term.)
-# 
+#
 # Then the minimum solution (x, y) for Pell's equation is given by:
 # - (p, q) if m is even
 # - (p^2 + D q^2, 2pq) if m is odd
@@ -47,8 +47,10 @@ def problem066():
        Find the value of D ≤ 1000 in minimal solutions of x for which the largest
        value of x is obtained.
     """
-    ans = max((n for n in range(2, 1001) if (not eulerlib.is_square(n))),
-              key=smallest_solution_x)
+    ans = max(
+        (n for n in range(2, 1001) if (not eulerlib.is_square(n))),
+        key=smallest_solution_x,
+    )
     return ans
 
 
@@ -56,10 +58,10 @@ def problem066():
 # Requires n to not be a perfect square.
 def smallest_solution_x(n):
     contfrac = sqrt_to_continued_fraction(n)
-    temp = contfrac[0] + contfrac[1][: -1]
+    temp = contfrac[0] + contfrac[1][:-1]
 
     val = fractions.Fraction(temp[-1], 1)
-    for term in reversed(temp[: -1]):
+    for term in reversed(temp[:-1]):
         val = 1 / val + term
 
     if len(contfrac[1]) % 2 == 0:
@@ -82,12 +84,11 @@ def sqrt_to_continued_fraction(n):
         if val in seen:
             break
     split = seen[val]
-    return (terms[: split], terms[split:])
+    return (terms[:split], terms[split:])
 
 
 # Represents (a + b * sqrt(d)) / c. d must not be a perfect square.
 class QuadraticSurd(object):
-
     def __init__(self, a, b, c, d):
         if c == 0:
             raise ValueError()
@@ -115,14 +116,16 @@ class QuadraticSurd(object):
             self.a * other.c - other.a * self.c,
             self.b * other.c - other.b * self.c,
             self.c * other.c,
-            self.d)
+            self.d,
+        )
 
     def reciprocal(self):
         return QuadraticSurd(
             -self.a * self.c,
             self.b * self.c,
             self.b * self.b * self.d - self.a * self.a,
-            self.d)
+            self.d,
+        )
 
     def floor(self):
         temp = eulerlib.sqrt(self.b * self.b * self.d)
@@ -134,8 +137,12 @@ class QuadraticSurd(object):
         return temp // self.c
 
     def __eq__(self, other):
-        return self.a == other.a and self.b == other.b \
-               and self.c == other.c and self.d == other.d
+        return (
+                self.a == other.a
+                and self.b == other.b
+                and self.c == other.c
+                and self.d == other.d
+        )
 
     def __ne__(self, other):
         return not (self == other)

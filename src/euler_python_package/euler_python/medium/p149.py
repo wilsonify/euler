@@ -1,4 +1,3 @@
-
 def problem149():
     SIZE = 2000
 
@@ -7,7 +6,9 @@ def problem149():
     for i in range(SIZE ** 2):
         k = i + 1
         if k <= 55:
-            randseq.append((100003 - 200003 * k + 300007 * k * k * k) % 1000000 - 500000)
+            randseq.append(
+                (100003 - 200003 * k + 300007 * k * k * k) % 1000000 - 500000
+            )
         else:
             randseq.append((randseq[-24] + randseq[-55]) % 1000000 - 500000)
 
@@ -20,7 +21,9 @@ def problem149():
         result = 0
         current = 0
         while 0 <= x < SIZE and 0 <= y < SIZE:
-            current = max(current + grid[y][x], 0)  # Reset the running sum if it goes negative
+            current = max(
+                current + grid[y][x], 0
+            )  # Reset the running sum if it goes negative
             result = max(current, result)  # Keep track of the best seen running sum
             x += dx
             y += dy
@@ -28,13 +31,16 @@ def problem149():
 
     # Scan along all line directions and positions
     ans = max(
-        max(get_max_substring_sum(0, i, +1, 0),  # Horizontal from left edge
+        max(
+            get_max_substring_sum(0, i, +1, 0),  # Horizontal from left edge
             get_max_substring_sum(i, 0, 0, +1),  # Vertical from top edge
             get_max_substring_sum(0, i, +1, +1),  # Diagonal from left edge
             get_max_substring_sum(i, 0, +1, +1),  # Diagonal from top edge
             get_max_substring_sum(i, 0, -1, +1),  # Anti-diagonal from top edge
-            get_max_substring_sum(SIZE - 1, i, -1, +1))  # Anti-diagonal from right edge
-        for i in range(SIZE))
+            get_max_substring_sum(SIZE - 1, i, -1, +1),
+        )  # Anti-diagonal from right edge
+        for i in range(SIZE)
+    )
     return ans
 
 

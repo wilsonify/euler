@@ -1,12 +1,11 @@
-
 # Because the robot moves in 72-degree arcs, it can only face 5 possible directions.
 # - Define the initial northward direction as the integer 0.
 # - Let each anticlockwise (leftward) move add 1 to the direction, modulo 5.
 # - Let each clockwise (rightward) move subtract 1 from the direction, modulo 5.
-# 
+#
 # At each of the 5 possible facing directions, there are 2 possible moves.
 # What is the (x, y) displacement of each of these 10 possible moves?
-# 
+#
 # We can figure this out by drawing a circle with 5 points evenly spaced 72
 # degrees apart. To align with the problem description, one of the points will
 # be on the positive x axis. For our convenience, the circle shall have radius 4.
@@ -17,7 +16,7 @@
 # - Point 3: (cos 216, sin 216)*4 = (-(sqrt(5)+1), -sqrt(10-2sqrt(5))).
 # - Point 4: (cos 288, sin 288)*4 = (+(sqrt(5)-1), -sqrt(10+2sqrt(5))).
 # (The inputs to cos and sin are given in degrees.)
-# 
+#
 # This sequence of points is constructed so that the displacement vector from
 # point k to point k+1 is equal to the displacement of making an anticlockwise
 # move when facing direction k. For example, (point1 - point0) is the
@@ -30,7 +29,7 @@
 # - point0 - point4 = (+(5-sqrt(5)),  +sqrt(10+2sqrt(5))).
 # As for clockwise moves, simply take the displacements vectors above and negate the x values.
 # The mapping of displacement vectors to direction states also needs to be negated modulo 5.
-# 
+#
 # Altogether, we have this table of valid moves:
 #    Direction | Move | x displacement |   y displacement
 #   -----------+------+----------------+---------------------
@@ -45,7 +44,7 @@
 #        4     | ACW  |  +(5-sqrt(5))  | +sqrt(10+2sqrt(5))
 #        4     |  CW  |    +2sqrt(5)   | -2sqrt(5-2sqrt(5))
 # Note that -2sqrt(5-2sqrt(5)) = sqrt(10-2sqrt(5)) - sqrt(10+2sqrt(5)).
-# 
+#
 # As the robot moves, it adds x components and y components to its displacement.
 # - At any given time, the x coordinate equals a unique integer-weighted
 #   sum of 2sqrt(5) and (sqrt(5)-5), namely i*2sqrt(5) + j*(sqrt(5)-5).
@@ -65,7 +64,8 @@ def problem208():
             state[1] + entry[0] * sign,
             state[2] + entry[1] * sign,
             state[3] + entry[2],
-            state[4] + entry[3])
+            state[4] + entry[3],
+        )
 
     reachable = {(0, 0, 0, 0, 0): 1}
     for _ in range(LIMIT):

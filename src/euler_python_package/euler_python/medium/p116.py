@@ -1,19 +1,18 @@
-
 def problem116():
     LENGTH = 50
-    return (sum(count_ways(LENGTH, i) for i in range(2, 5)))
+    return sum(count_ways(LENGTH, i) for i in range(2, 5))
 
 
 # How many ways can a row n units long be filled with black squares 1 unit long
 # and colored tiles m units long? Denote this quantity as ways[n].
 # Compute n = 0 manually as a base case.
-# 
+#
 # Now assume n >= 1. Look at the leftmost item and sum up the possibilities.
 # - If the item is a black square, then the rest of the row
 #   is allowed to be anything of length n-1. Add ways[n-1].
 # - If the item is a colored tile of length m where m <= n, then the
 #   rest of the row can be anything of length n-m. Add ways[n-m].
-# 
+#
 # At the end, return ways[length]-1 to exclude the case where the row is all black squares.
 def count_ways(length, m):
     # Dynamic programming

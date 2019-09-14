@@ -32,9 +32,13 @@ def problem060():
             for i in range(istart, len(primes)):
                 if primes[i] > sum_limitation:
                     break
-                if all((is_concat_prime(i, j) and is_concat_prime(j, i)) for j in prefix):
+                if all(
+                        (is_concat_prime(i, j) and is_concat_prime(j, i)) for j in prefix
+                ):
                     prefix.append(i)
-                    result = find_set_sum(prefix, targetsize, sum_limitation - primes[i])
+                    result = find_set_sum(
+                        prefix, targetsize, sum_limitation - primes[i]
+                    )
                     prefix.pop()
                     if result is not None:
                         return result

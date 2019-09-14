@@ -1,10 +1,10 @@
-
-# 
-# 
 #
 #
-from euler_python.utils import eulerlib
+#
+#
 import fractions
+
+from euler_python.utils import eulerlib
 
 
 # Define a sequence of random variables:
@@ -17,7 +17,7 @@ import fractions
 #   of n uniformly random bits to see at least one 1 in each bit. For example, if
 #   two random bits experience the sequence (01, 01, 10, 00, 11, ...), then X2 = 3
 #   because it took 3 trials for the running bitwise OR to become 11.
-# 
+#
 # Now consider the expected value of each random variable:
 # - E[X0] is obviously 0.
 # - E[X1] is the expected value of the geometric distribution with p=0.5, with a
@@ -30,7 +30,7 @@ import fractions
 #     probability (half) multiplied by one (because we performed one trial).
 #   Altogether, we have that E[X1] = 1/2 * (1 + E[X1]) + 1/2 * 1 = 1 + E[X1]/2.
 #   Rearrange to get E[X1]/2 = 1, thus E[X1] = 2 as wanted.
-# 
+#
 # - As for E[X2], look at what happens in a single trial of the two bits:
 #   - If none of the bits are 1, then we have performed one trial and are back to
 #     the same situation. There is a 1 in 4 chance of this happening (bit string 00).
@@ -48,10 +48,11 @@ import fractions
 #   Simplifying further so that E[X_n] only appears on the left side, we get:
 #   (2^n - 1) * E[X_n] = 2^n + sum((n choose k) * E[X_{n-k}] for k in [0, n-1]).
 #   E[X_n] = (2^n + sum((n choose k) * E[X_{n-k}] for k in [0, n-1])) / (2^n - 1).
-# 
+#
 # Finally, E[X32] is the number that we want as the answer.
 # Note that this solution algorithm carefully uses entirely integer arithmetic,
 # even though it is tempting to use floating-point numbers as a shortcut.
+
 
 def problem323():
     SIZE = 32
@@ -80,7 +81,7 @@ def problem323():
     if DECIMALS == 0:
         return temp
     temp = temp.zfill(DECIMALS + 1)
-    return "{}.{}".format(temp[: -DECIMALS], temp[-DECIMALS:])
+    return "{}.{}".format(temp[:-DECIMALS], temp[-DECIMALS:])
 
 
 if __name__ == "__main__":

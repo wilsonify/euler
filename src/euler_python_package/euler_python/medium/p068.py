@@ -39,10 +39,12 @@ def problem068():
     max = None
     while True:
         sum = state[0] + state[5] + state[6]
-        if state[1] + state[6] + state[7] == sum and \
-                state[2] + state[7] + state[8] == sum and \
-                state[3] + state[8] + state[9] == sum and \
-                state[4] + state[9] + state[5] == sum:
+        if (
+                state[1] + state[6] + state[7] == sum
+                and state[2] + state[7] + state[8] == sum
+                and state[3] + state[8] + state[9] == sum
+                and state[4] + state[9] + state[5] == sum
+        ):
 
             minouterindex = 0
             minouter = state[0]

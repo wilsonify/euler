@@ -1,7 +1,6 @@
-
 # minSumProduct[k] is the smallest positive integers that can be written as both a sum and a product of the same collection of k positive integers.
 # For example, minSumProduct[3] = 6 because 6 = 1 + 2 + 3 = 1 * 2 * 3, and this is the minimum possible number for 3 terms.
-# 
+#
 # For all k >= 2:
 # - minSumProduct[k] > k because 1 + ... + 1 (with k terms) = k, which is the minimum sum of k positive integers,
 #   but the product is 1 which is unequal to k, so k is not a valid solution.
@@ -9,7 +8,7 @@
 #   Since this is one achievable solution, the minimum solution must be no larger than this.
 # - Aside: minSumProduct[k] is not a prime number. Suppose minSumProduct[k] = p, where p is prime. Then p can only be factorized as p, p * 1, p * 1 * 1, etc.
 #   So whenever the factorization has more than one term, the sum exceeds p, which makes it unequal to the product.
-# 
+#
 # Therefore we need to consider all numbers from 2 to LIMIT*2 and factorize them in all possible ways to find all the relevant solutions.
 def problem088():
     """
@@ -54,14 +53,22 @@ def problem088():
             if sum > n:  # Without using factors of 1, the sum never exceeds the product
                 raise AssertionError()
             terms += n - sum
-            if terms <= LIMIT and (minsumproduct[terms] is None or n < minsumproduct[terms]):
+            if terms <= LIMIT and (
+                    minsumproduct[terms] is None or n < minsumproduct[terms]
+            ):
                 minsumproduct[terms] = n
         else:
             # Note: maxfactor <= remain
             for i in range(2, maxfactor + 1):
                 if remain % i == 0:
                     factor = i
-                    factorize(n, remain // factor, min(factor, maxfactor), sum + factor, terms + 1)
+                    factorize(
+                        n,
+                        remain // factor,
+                        min(factor, maxfactor),
+                        sum + factor,
+                        terms + 1,
+                    )
 
     for i in range(2, LIMIT * 2 + 1):
         factorize(i, i, i, 0, 0)

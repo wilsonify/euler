@@ -13,9 +13,7 @@ def num_divisors(input_n):
     :return:
     """
     end = eulerlib.sqrt(input_n)
-    result = sum(2
-                 for i in range(1, end + 1)
-                 if input_n % i == 0)
+    result = sum(2 for i in range(1, end + 1) if input_n % i == 0)
     if end ** 2 == input_n:
         result -= 1
     return result

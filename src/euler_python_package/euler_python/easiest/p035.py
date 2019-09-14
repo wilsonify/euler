@@ -25,11 +25,11 @@ def count_circular_primes(upper_bound=999999):
 
     def is_circular_prime(input_n):
         n_string = str(input_n)
-        return all(is_prime[int(n_string[i:] + n_string[: i])] for i in range(len(n_string)))
+        return all(
+            is_prime[int(n_string[i:] + n_string[:i])] for i in range(len(n_string))
+        )
 
-    ans = sum(1
-              for i in range(len(is_prime))
-              if is_circular_prime(i))
+    ans = sum(1 for i in range(len(is_prime)) if is_circular_prime(i))
     return ans
 
 

@@ -153,7 +153,9 @@ def binomial(input_n, input_k):
     :return:
     """
     assert 0 <= input_k <= input_n
-    return math.factorial(input_n) // (math.factorial(input_k) * math.factorial(input_n - input_k))
+    return math.factorial(input_n) // (
+            math.factorial(input_k) * math.factorial(input_n - input_k)
+    )
 
 
 # Returns x^-1 mod m. Note that x * x^-1 mod m = x^-1 * x mod m = 1.
@@ -172,9 +174,10 @@ def reciprocal_mod(input_x, input_m):
     intermediate_a = 0
     intermediate_b = 1
     while intermediate_y != 0:
-        intermediate_a, \
-        intermediate_b = intermediate_b, \
-                         intermediate_a - input_x // intermediate_y * intermediate_b
+        intermediate_a, intermediate_b = (
+            intermediate_b,
+            intermediate_a - input_x // intermediate_y * intermediate_b,
+        )
         input_x, intermediate_y = intermediate_y, input_x % intermediate_y
     if input_x == 1:
         return intermediate_a % input_m

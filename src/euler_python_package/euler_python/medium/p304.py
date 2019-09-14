@@ -1,10 +1,11 @@
-
 from euler_python.utils import eulerlib
 
 
 def problem304():
     BASE = 10 ** 14
-    SEARCH_RANGE = 10000000  # Number of candidates starting from BASE to search for primes. Hopefully there are 100 000 primes among here.
+    SEARCH_RANGE = (
+        10000000
+    )  # Number of candidates starting from BASE to search for primes. Hopefully there are 100 000 primes among here.
     MODULUS = 1234567891011
 
     # iscomposite[i] pertains to the number BASE + i

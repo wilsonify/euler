@@ -1,4 +1,3 @@
-
 import math
 
 
@@ -15,7 +14,9 @@ def problem197():
     while i < ITERATIONS:
         # Here at the top of the loop, x = f^i(-1) and y = f^{2i}(-1)
 
-        if i > 0 and x == y:  # This means index i is part of the cycle, and (2i - i) = i is some multiple of the true cycle length
+        if (
+                i > 0 and x == y
+        ):  # This means index i is part of the cycle, and (2i - i) = i is some multiple of the true cycle length
             break
 
         # Advance the states at different speeds
@@ -29,7 +30,9 @@ def problem197():
         x = f(x)
 
     ans = x + f(x)
-    ans = math.floor(ans * 1.0e9) / 1.0e9  # Truncate to 9 digits after the decimal point
+    ans = (
+            math.floor(ans * 1.0e9) / 1.0e9
+    )  # Truncate to 9 digits after the decimal point
     return "{:.9f}".format(ans)
 
 

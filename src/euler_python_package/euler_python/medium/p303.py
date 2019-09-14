@@ -1,4 +1,3 @@
-
 def problem303():
     """
     # This function computes and returns the smallest positive multiple of n such that the result
@@ -31,6 +30,7 @@ def problem303():
     # exists a solution for the remaining suffix of the number. When we choose a value at a certain
     # digit position, say 2 at the 8th place, we subtract 2 * 10^8 mod n from the ongoing remainder.
     """
+
     def find_minimum_multiple(n):
         # feasible[i][j] indicates whether there exists an i-digit number that consists of
         # only the digits {0, 1, 2} (with possible leading zeros) having a remainder of j modulo n:

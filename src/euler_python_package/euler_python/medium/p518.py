@@ -1,31 +1,30 @@
-
-# 
-# 
+#
+#
 # https:#www.nayuki.io/page/project-euler-solutions
 # https:#github.com/nayuki/Project-Euler-solutions
 import itertools
-
 import math
+
 from euler_python.utils import eulerlib
 
 
 # Suppose (a+1, b+1, c+1) are three positive integers that form a geometric sequence.
 # Then by definition, (c+1)/(b+1) = (b+1)/(a+1) = r for some ratio r.
 # r is a rational number because we are given that a, b, c are integers.
-# 
+#
 # Because of this, we can express r = z / y in lowest terms (i.e. y and z are coprime).
 # Note that since the solution requires a < b < c, we require r > 1, hence z > y > 0.
-# 
+#
 # Let's define x = (a+1) / y^2. Then we rearrange to get a + 1 = x * y * y.
 # We argue that x is an integer. Look at (c+1)/(a+1) = z^2/y^2. y^2 and z^2 are coprime,
 # thus the simplified denominator y^2 must divide the original denominator of a+1.
-# 
+#
 # With {x, y, z} defined, we have b + 1 = x * y * z and c + 1 = x * z * z.
 # Therefore every possible solution (a+1, b+1, c+1) can be re-expressed as
 # a triple of integers (x, y, z) such that x >= 1, y >= 1, z > y, and gcd(y,z) = 1.
 # In fact, this mapping of (a+1, b+1, c+1) to (x, y, z) is unique - this is because
 # the ratio (b+1)/(a+1) uniquely determines y and z; subsequently a and y together give x.
-# 
+#
 # The rest of the algorithm is a matter of searching x, y, z in some ascending order, and stopping
 # each loop when no more candidates are possible because they all necessarily exceed the limit.
 def problem518():

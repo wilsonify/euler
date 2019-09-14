@@ -1,14 +1,16 @@
-
 def problem250():
     # Use dynamic programming
     MOD = 10 ** 16
-    subsets = [0] * 250  # subsets[i] is {the number of subsets with sum equal to i mod 250} mod 10^16
+    subsets = [
+                  0
+              ] * 250  # subsets[i] is {the number of subsets with sum equal to i mod 250} mod 10^16
     subsets[0] = 1
 
     for i in range(1, 250250 + 1):
         offset = pow(i, i, 250)
-        subsets = [(val + subsets[(j - offset) % 250]) % MOD
-                   for (j, val) in enumerate(subsets)]
+        subsets = [
+            (val + subsets[(j - offset) % 250]) % MOD for (j, val) in enumerate(subsets)
+        ]
 
     ans = (subsets[0] - 1) % MOD
     return ans

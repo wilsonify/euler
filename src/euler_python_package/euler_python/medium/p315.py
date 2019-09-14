@@ -1,12 +1,13 @@
-
 from euler_python.utils import eulerlib
 
 
 def problem315():
     isprime = eulerlib.list_primality(20000000)
-    ans = sum(sam_transitions_minus_max_transitions(i)
-              for (i, p) in enumerate(isprime)
-              if i >= 10000000 and p)
+    ans = sum(
+        sam_transitions_minus_max_transitions(i)
+        for (i, p) in enumerate(isprime)
+        if i >= 10000000 and p
+    )
     return ans
 
 
@@ -51,8 +52,18 @@ def digit_sum(n):
 
 
 # Mapping of [0, 10) -> [0x00, 0x7F); each output fits in 7 bits.
-DECIMAL_DIGIT_TO_SEGMENT = [0b1110111, 0b0010010, 0b1011101, 0b1011011, 0b0111010, 0b1101011, 0b1101111, 0b1110010,
-                            0b1111111, 0b1111011]
+DECIMAL_DIGIT_TO_SEGMENT = [
+    0b1110111,
+    0b0010010,
+    0b1011101,
+    0b1011011,
+    0b0111010,
+    0b1101011,
+    0b1101111,
+    0b1110010,
+    0b1111111,
+    0b1111011,
+]
 
 if __name__ == "__main__":
     print(problem315())

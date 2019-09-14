@@ -1,4 +1,3 @@
-
 def problem215():
     WIDTH = 32
     HEIGHT = 10
@@ -13,7 +12,7 @@ def problem215():
                 get_crack_positions(cracks, position + i)
                 cracks.pop()
         elif position == WIDTH:
-            crackpositions.append(frozenset(cracks[: -1]))
+            crackpositions.append(frozenset(cracks[:-1]))
         else:  # position > WIDTH
             return
 
@@ -21,7 +20,8 @@ def problem215():
 
     noncrackindices = [
         [i for (i, cp1) in enumerate(crackpositions) if cp0.isdisjoint(cp1)]
-        for cp0 in crackpositions]
+        for cp0 in crackpositions
+    ]
 
     ways = [1] * len(crackpositions)
     for i in range(1, HEIGHT):

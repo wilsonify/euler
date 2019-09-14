@@ -1,21 +1,23 @@
-
-# 
-# 
-# 
 #
+#
+#
+#
+import fractions
+import math
+import sys
+
 from euler_python.utils import eulerlib
-import fractions, math, sys
 
 
 # When you win a coin toss, your capital is multiplied by (1 + 2f).
 # Whenever you lose, your capital is multiplied by (1 - f).
 # Thus the game's result is independent of the order of wins and losses;
 # what matters is only the total numbers of each outcome.
-# 
+#
 # Suppose you have n tosses and w wins. Then there are n - w losses.
 # By the binomial theorem, this outcome happens (n choose w) times out of 2^n.
 # Moreover, the final capital is 1 * (1 + 2f)^w * (1 - f)^(n - w).
-# 
+#
 # Some parts of this algorithm use accurate computations:
 # - Sum of binomial coefficients in bigint, for the probability.
 # - Conversion of the probability bigint fraction to decimal string.
@@ -82,7 +84,7 @@ def round_to_decimal(fracnum, places):
         rounded = round(fracnum)
 
     s = str(rounded).zfill(places + 1)
-    return s[: -places] + "." + s[-places:]
+    return s[:-places] + "." + s[-places:]
 
 
 if __name__ == "__main__":

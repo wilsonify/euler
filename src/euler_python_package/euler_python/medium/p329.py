@@ -1,9 +1,8 @@
-
-
 #
 #
-from euler_python.utils import eulerlib
 import fractions
+
+from euler_python.utils import eulerlib
 
 
 # We simulate by brute force all the possible paths that the frog can take, and
@@ -11,7 +10,7 @@ import fractions
 # at one of the 500 squares and makes a croak. Then it jumps left or right 14 times
 # and makes a croak after each jump (thus there are 15 croaks per simulation).
 # Overall, there are exactly 500 * 2^14 = 8.192 million paths to examine.
-# 
+#
 # Let's look at how the probabilities work for a particular path:
 # - Because the frog starts at each square with uniform probability and jumps left/right
 #   with equal probability, the probability of any particular path is 1 / (500 * 2^14).
@@ -23,12 +22,12 @@ import fractions
 #   where the croak letter matches the primeness sequence) * (1/3)^(number of indexes
 #   where the croak letter mismatches the primeness sequence). We can simplify this
 #   expression to just 2^(number of matching indexes) / 3^15.
-# 
+#
 # So for all the 8192000 paths, we calculate the probability that each path matches
 # the target croak sequence, sum all these probabilities, and divide by 8192000.
 # We perform calculations in fraction or integer form (not floating point),
 # and extract the numerator and denominator of the final simplified result.
-# 
+#
 # Note that this analysis is correct even considering the rule that when
 # the frog is at one of the range endpoints, it only has one possible move
 # (e.g. if the frog is at square 1, then it must move to square 2).
@@ -53,7 +52,7 @@ def problem329():
             # Set initial position and croak
             pos = i
             trialnumerator = 1
-            if isprime[pos] == (CROAK_SEQ[0] == 'P'):
+            if isprime[pos] == (CROAK_SEQ[0] == "P"):
                 trialnumerator *= 2
 
             # Simulate each jump and croak
@@ -69,7 +68,7 @@ def problem329():
 
                 # Multiply the running probability by 2/3 if primeness of current position
                 # matches croak sequence at current index, otherwise multiply by 1/3
-                if isprime[pos] == (CROAK_SEQ[k + 1] == 'P'):
+                if isprime[pos] == (CROAK_SEQ[k + 1] == "P"):
                     trialnumerator *= 2
             globalnumerator += trialnumerator
 

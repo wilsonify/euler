@@ -1,8 +1,1 @@
-__all__ = [
-    'easiest',
-    'easy',
-    'hard',
-    'hardest',
-    'medium',
-    'utils',
-]
+__all__ = ["easiest", "easy", "hard", "hardest", "medium", "utils"]

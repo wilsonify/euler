@@ -1,7 +1,6 @@
-
 # How many ways can a row n units long be filled? Denote this quantity as ways[n].
 # Compute n = 0, 1, 2 manually as base cases.
-# 
+#
 # Now assume n >= 3. Look at the leftmost item and sum up the possibilities.
 # - If the item is a black square, then the rest of the row is allowed
 #   to be anything of length n-1. Add ways[n-1].
@@ -18,7 +17,7 @@ def problem114():
             ways[n] = 1
         else:
             ways[n] = ways[n - 1] + sum(ways[: n - 3]) + 1
-    return (ways[-1])
+    return ways[-1]
 
 
 if __name__ == "__main__":

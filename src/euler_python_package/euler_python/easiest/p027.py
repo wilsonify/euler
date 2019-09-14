@@ -87,8 +87,10 @@ def product_of_coefficients(limit=1000):
 
     """
 
-    ans = max(((a, b) for a in range(-(limit - 1), limit) for b in range(2, limit)),
-              key=count_consecutive_primes)
+    ans = max(
+        ((a, b) for a in range(-(limit - 1), limit) for b in range(2, limit)),
+        key=count_consecutive_primes,
+    )
     return ans[0] * ans[1]
 
 

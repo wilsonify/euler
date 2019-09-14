@@ -1,4 +1,3 @@
-
 def problem124():
     LIMIT = 100000
 
@@ -10,7 +9,7 @@ def problem124():
                 rads[j] *= i
 
     data = sorted((rad, i) for (i, rad) in enumerate(rads))
-    return (data[10000][1])
+    return data[10000][1]
 
 
 if __name__ == "__main__":

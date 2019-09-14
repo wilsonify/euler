@@ -105,7 +105,7 @@ def problem013():
                53503534226472524250874054075591789781264330331690
     """
 
-    return int(str(sum(NUMBERS))[: 10])
+    return int(str(sum(NUMBERS))[:10])
 
 
 NUMBERS = [

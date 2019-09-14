@@ -31,12 +31,16 @@ def problem093():
        answer as a string: abcd.
     """
 
-    ans = max(((a, b, c, d)
-               for a in range(1, 10)
-               for b in range(a + 1, 10)
-               for c in range(b + 1, 10)
-               for d in range(c + 1, 10)),
-              key=longest_consecutive)
+    ans = max(
+        (
+            (a, b, c, d)
+            for a in range(1, 10)
+            for b in range(a + 1, 10)
+            for c in range(b + 1, 10)
+            for d in range(c + 1, 10)
+        ),
+        key=longest_consecutive,
+    )
     return int("".join(str(x) for x in ans))
 
 

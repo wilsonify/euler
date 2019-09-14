@@ -21,9 +21,15 @@ def problem049():
             for step in range(1, limit):
                 a = base + step
                 b = a + step
-                if a < limit and isprime[a] and has_same_digits(a, base) \
-                        and b < limit and isprime[b] and has_same_digits(b, base) \
-                        and (base != 1487 or a != 4817):
+                if (
+                        a < limit
+                        and isprime[a]
+                        and has_same_digits(a, base)
+                        and b < limit
+                        and isprime[b]
+                        and has_same_digits(b, base)
+                        and (base != 1487 or a != 4817)
+                ):
                     return int(str(base) + str(a) + str(b))
     raise RuntimeError("Not found")
 

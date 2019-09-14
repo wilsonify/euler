@@ -1,8 +1,7 @@
-
-
 #
 #
 import math
+
 from euler_python.utils import eulerlib
 
 

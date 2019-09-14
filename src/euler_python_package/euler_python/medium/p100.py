@@ -1,4 +1,3 @@
-
 from euler_python.utils import eulerlib
 
 
@@ -14,11 +13,11 @@ from euler_python.utils import eulerlib
 #   b = [(2r + 1) +/- sqrt((2r + 1)^2 - 4(r - r^2))] / 2
 #     = r + [1 +/- sqrt(8r^2 + 1)]/2
 #     = r + [sqrt(8r^2 + 1) + 1]/2.  (Discard the minus solution because it would make b < r)
-# 
+#
 # For b to be an integer, we need sqrt(8r^2 + 1) to be odd, and also 8r^2 + 1 be a perfect square.
 # Assume 8y^2 + 1 = x^2 for some integer x > 0.
 # We can see this is in fact a Pell's equation: x^2 - 8y^2 = 1.
-# 
+#
 # Suppose we have the solution (x0, y0) such that x0 > 0 and x0 is as small as possible.
 # This is called the fundamental solution, and all other solutions be derived from it (proven elsewhere).
 # Suppose (x0, y0) and (x1, y1) are solutions. Then we have:
@@ -64,7 +63,7 @@ def problem100():
         if sqrt % 2 == 1:  # Is odd
             blue = (sqrt + 1) // 2 + y
             if blue + y > 10 ** 12:
-                return (blue)
+                return blue
 
         # Create the next bigger solution
         nextx = x * x0 + y * y0 * 8

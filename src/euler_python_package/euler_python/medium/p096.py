@@ -1,4 +1,3 @@
-
 def problem096():
     """
 
@@ -44,7 +43,7 @@ def problem096():
     """
 
     def extract(sudoku):  # For example: extract([3, 9, 4, 1, ...]) = 394
-        return int("".join(map(str, sudoku[: 3])))
+        return int("".join(map(str, sudoku[:3])))
 
     ans = sum(extract(solve(puz)) for puz in PUZZLES)
     return ans

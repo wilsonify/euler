@@ -1,4 +1,3 @@
-
 from euler_python.utils import eulerlib
 
 
@@ -37,8 +36,9 @@ def problem111():
                     d = temp % 9
                     if d >= digit:  # Skip the repeating digit
                         d += 1
-                    if j > 0 and d > digits[
-                        DIGITS - j]:  # If this is true, then after sorting, the array will be in an already-tried configuration
+                    if (
+                            j > 0 and d > digits[DIGITS - j]
+                    ):  # If this is true, then after sorting, the array will be in an already-tried configuration
                         break
                     digits[-1 - j] = d
                     temp //= 9
@@ -47,8 +47,9 @@ def problem111():
                     digits.sort()  # Start at lowest permutation
 
                     while True:  # Go through all permutations
-                        if digits[
-                            0] > 0:  # Skip if the number has a leading zero, which means it has less than DIGIT digits
+                        if (
+                                digits[0] > 0
+                        ):  # Skip if the number has a leading zero, which means it has less than DIGIT digits
                             num = int("".join(map(str, digits)))
                             if is_prime(num):
                                 sum += num

@@ -1,4 +1,3 @@
-
 from euler_python.utils import eulerlib
 
 
@@ -42,11 +41,14 @@ def problem090():
     """
 
     # Each die has (10 choose 6) arrangements, so we have at most 44100 arrangements to check
-    ans = sum(1
-              for i in range(1 << 10)
-              for j in range(i, 1 << 10)  # Ensure i <= j to force the dice to be orderless
-              # If both have Hamming weight of 6
-              if eulerlib.popcount(i) == eulerlib.popcount(j) == 6 and is_arrangement_valid(i, j))
+    ans = sum(
+        1
+        for i in range(1 << 10)
+        for j in range(i, 1 << 10)  # Ensure i <= j to force the dice to be orderless
+        # If both have Hamming weight of 6
+        if eulerlib.popcount(i) == eulerlib.popcount(j) == 6
+        and is_arrangement_valid(i, j)
+    )
     return ans
 
 
@@ -55,8 +57,10 @@ def is_arrangement_valid(a, b):
         a |= (1 << 6) | (1 << 9)
     if test_bit(b, 6) or test_bit(b, 9):
         b |= (1 << 6) | (1 << 9)
-    return all(((test_bit(a, c) and test_bit(b, d)) or (test_bit(a, d) and test_bit(b, c)))
-               for (c, d) in SQUARES)
+    return all(
+        ((test_bit(a, c) and test_bit(b, d)) or (test_bit(a, d) and test_bit(b, c)))
+        for (c, d) in SQUARES
+    )
 
 
 def test_bit(x, i):

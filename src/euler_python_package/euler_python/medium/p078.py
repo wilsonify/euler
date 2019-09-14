@@ -1,4 +1,3 @@
-
 import itertools
 
 MODULUS = 10 ** 6
@@ -56,7 +55,7 @@ def problem078():
 
         # Check or Memoize the number
         if item == 0:
-            return (i)
+            return i
         partitions.append(item)
 
 

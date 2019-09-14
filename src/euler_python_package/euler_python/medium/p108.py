@@ -1,9 +1,8 @@
-
-
 #
 #
-from euler_python.utils import eulerlib
 import itertools
+
+from euler_python.utils import eulerlib
 
 
 # Rewrite the equation with x = n+i, y = n+j, and manipulate it:
@@ -22,7 +21,7 @@ import itertools
 def problem108():
     for n in itertools.count(1):
         if (count_divisors_squared(n) + 1) // 2 > 1000:
-            return (n)
+            return n
 
 
 # Returns the number of divisors of n^2

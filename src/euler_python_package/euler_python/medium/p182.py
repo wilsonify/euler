@@ -1,5 +1,3 @@
-
-
 import math
 
 
@@ -12,9 +10,12 @@ def problem182():
     minunconcealedp = min(numunconcealedp)
     minunconcealedq = min(numunconcealedq)
 
-    ans = sum(e for e in range(TOTIENT) if
-              numunconcealedp[e % (P - 1)] == minunconcealedp and
-              numunconcealedq[e % (Q - 1)] == minunconcealedq)
+    ans = sum(
+        e
+        for e in range(TOTIENT)
+        if numunconcealedp[e % (P - 1)] == minunconcealedp
+        and numunconcealedq[e % (Q - 1)] == minunconcealedq
+    )
     return ans
 
 

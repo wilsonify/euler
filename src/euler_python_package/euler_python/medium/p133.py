@@ -1,14 +1,13 @@
-
 from euler_python.utils import eulerlib
 
 
 # Repunit formula: R(k) = (10^k - 1) / 9. (Using geometric series)
-# 
+#
 # For the rest of the argument, let n be an arbitrary integer that is coprime with 10.
-# 
+#
 # Let k = A(n) be the smallest positive integer such that R(k) = 0 mod n.
 # From problem #129, we know k exists and satisfies 1 <= k <= n.
-# 
+#
 # Lemma: For each natural number m, R(m) = 0 mod n if and only if m is a multiple of k.
 # Proof:
 #   Backward direction:
@@ -24,10 +23,10 @@ from euler_python.utils import eulerlib
 #     (m' != 0 because we assumed m is not a multiple of k.) But with R(m') = R(m) = 0 mod n, and m' < k,
 #     this contradicts the definition of k = A(n), the smallest value such that R(k) = 0 mod n.
 #     Hence the supposition that R(m) = 0 mod n is false.
-# 
+#
 # Does there exist an x such that R(10^x) is a multiple of n? By the lemma, this is true if and only if
 # there exists an x such that 10^x is a multiple of k. This means k must be a product of 2's and 5's.
-# 
+#
 # Actually, we don't need to compute k = A(n) to perform this test. If k = 2^a * 5^b, then all sufficiently large
 # powers of 10 are a multiple of k. (If k has other prime factors, then no power of 10 is a multiple of k.)
 # We know 1 <= k < n, so in this problem 1 <= k < 10^5. For k in this range, the largest exponent among a and b is 16

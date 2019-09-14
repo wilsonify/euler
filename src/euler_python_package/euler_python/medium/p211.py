@@ -1,6 +1,7 @@
+import array
+import sys
 
 from euler_python.utils import eulerlib
-import array, sys
 
 
 def problem211():

@@ -1,4 +1,3 @@
-
 from euler_python.utils import eulerlib
 
 
@@ -12,7 +11,7 @@ def problem118():
         else:
             result = 0
             for split in range(startindex + 1, len(digits) + 1):
-                num = int("".join(map(str, digits[startindex: split])))
+                num = int("".join(map(str, digits[startindex:split])))
                 if num > prevnum and is_prime(num):
                     result += count_prime_sets(split, num)
             return result

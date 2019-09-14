@@ -6,10 +6,12 @@ def largest_palindrome_from_product_of_two_n_digit_numbers(n):
     :param n:
     :return:
     """
-    ans = max(i * j
-              for i in range(10 ** (n - 1), 10 ** n)
-              for j in range(10 ** (n - 1), 10 ** n)
-              if str(i * j) == str(i * j)[:: -1])
+    ans = max(
+        i * j
+        for i in range(10 ** (n - 1), 10 ** n)
+        for j in range(10 ** (n - 1), 10 ** n)
+        if str(i * j) == str(i * j)[::-1]
+    )
     return ans
 
 

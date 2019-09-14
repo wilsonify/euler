@@ -25,8 +25,12 @@ def factorial_digit_sum(input_n):
     return result + FACTORIAL_DIGITS_SUM_WITHOUT_LEADING_ZEROS[input_n]
 
 
-FACTORIAL_DIGITS_SUM_WITHOUT_LEADING_ZEROS = [sum(math.factorial(int(c)) for c in str(i)) for i in range(10000)]
-FACTORIAL_DIGITS_SUM_WITH_LEADING_ZEROS = [sum(math.factorial(int(c)) for c in str(i).zfill(4)) for i in range(10000)]
+FACTORIAL_DIGITS_SUM_WITHOUT_LEADING_ZEROS = [
+    sum(math.factorial(int(c)) for c in str(i)) for i in range(10000)
+]
+FACTORIAL_DIGITS_SUM_WITH_LEADING_ZEROS = [
+    sum(math.factorial(int(c)) for c in str(i).zfill(4)) for i in range(10000)
+]
 
 
 def sum_factorial_digits(upper_bound=10000000):

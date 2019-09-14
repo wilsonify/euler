@@ -16,7 +16,9 @@ def problem007():
     What is the 10001st prime number?
     """
 
-    ans = next(itertools.islice(filter(eulerlib.is_prime, itertools.count(2)), 10000, None))
+    ans = next(
+        itertools.islice(filter(eulerlib.is_prime, itertools.count(2)), 10000, None)
+    )
     return ans
 
 

@@ -1,4 +1,3 @@
-
 import itertools
 
 
@@ -28,10 +27,10 @@ def problem104():
         # Loop invariants: a == fib(i) % MOD, b == fib(i+1) % MOD
         if "".join(sorted(str(a))) == "123456789":  # If suffix is pandigital
             f = fibonacci(i)[0]
-            if "".join(sorted(str(f)[: 9])) == "123456789":  # If prefix is pandigital
-                return (i)
+            if "".join(sorted(str(f)[:9])) == "123456789":  # If prefix is pandigital
+                return i
         a, b = b, (a + b) % MOD
-    return (i)
+    return i
 
 
 # Returns the tuple (F(n), F(n+1)), computed by the fast doubling method.

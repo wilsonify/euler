@@ -1,5 +1,5 @@
 # We start with three pedantic lemmas to constrain the nature of possible solutions.
-# 
+#
 # No-zero lemma:
 #   A special sum set (SSS) should not contain the value 0. The problem statement
 #   doesn't say this explicitly, but it is implied in the numerical examples.
@@ -17,11 +17,11 @@
 # 	subsets {0,a} and {b}, where 0 and a and b are distinct elements of the set and a < b.
 #   Hence for 0 <= n <= 2, allowing 0 would produce a more optimum solution than the
 #   examples given in the problem statement, and for n >= 3 an SSS can never contain 0.
-# 
+#
 # As for negative numbers, the intent of the problem statement readily suggests that elements
 # are never negative. Furthermore, having negative numbers in a set would either affect the
 # sum by only a small amount or violate property (ii), making the problem uninteresting.
-# 
+#
 # Upper bound lemma:
 #   For each natural number n >= 0, there exists a special sum set
 #   whose size is n and whose sum is (n + 1) * 2^n - 1.
@@ -45,7 +45,7 @@
 #     less than or equal to the aforementioned sum.
 #   - For size 7, we know there exists an SSS of sum exactly (7 + 1) * 2^7 - 1 = 1023.
 #     Hence we don't need to search any larger sums.
-# 
+#
 # Lower bound lemma:
 #   For each n >= 3, each special sum set of size n must have sum at least 2^n.
 # Proof:
@@ -146,7 +146,9 @@ class SpecialSumSet(object):
     # and with a sum of at most maximumsum, or None if no such set exists.
     @staticmethod
     def make_set(targetsize, maximumsum):
-        return SpecialSumSet._make_set(SpecialSumSet([], [True], [0], [0]), targetsize, maximumsum, 1)
+        return SpecialSumSet._make_set(
+            SpecialSumSet([], [True], [0], [0]), targetsize, maximumsum, 1
+        )
 
     # Returns the lexicographically lowest special sum set by adding exactly sizeremain elements
     # to the given set, such that the sum of the additional elements is at most sumremain,
@@ -183,7 +185,9 @@ class SpecialSumSet(object):
                 continue
 
             # Recurse and see if a solution is found down the call tree
-            temp = SpecialSumSet._make_set(temp, sizeremain - 1, sumremain - val, val + 1)
+            temp = SpecialSumSet._make_set(
+                temp, sizeremain - 1, sumremain - val, val + 1
+            )
             if temp is not None:
                 return temp
         return None  # No solution for the given current state
@@ -228,8 +232,16 @@ class SpecialSumSet(object):
         newsize = size + 1
         minsum = self.minimumsum
         maxsum = self.maximumsum
-        newmin = [0] + [min(minsum[i], minsum[i - 1] + val) for i in range(1, newsize)] + [minsum[size] + val]
-        newmax = [0] + [max(maxsum[i], maxsum[i - 1] + val) for i in range(1, newsize)] + [maxsum[size] + val]
+        newmin = (
+                [0]
+                + [min(minsum[i], minsum[i - 1] + val) for i in range(1, newsize)]
+                + [minsum[size] + val]
+        )
+        newmax = (
+                [0]
+                + [max(maxsum[i], maxsum[i - 1] + val) for i in range(1, newsize)]
+                + [maxsum[size] + val]
+        )
 
         # Check iff property (ii) '|B| > |C| implies S(B) > S(C)' is violated
         if any((newmax[i] >= newmin[i + 1]) for i in range(newsize)):

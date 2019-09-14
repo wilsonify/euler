@@ -1,9 +1,6 @@
-
-
-
 # As per the problem statement, define t(n) = 2n^2 - 1 and assume that always n > 1.
 # Hence t(n) >= 7, and the sequence is strictly increasing (with no repeats).
-# 
+#
 # Algorithm statement:
 # 0. Create a mutable sequence of integers, with indices (2, 3, 4, ..., 50000000)
 #    initialized to (t(2), t(3), t(4), ..., t(50000000)).
@@ -12,13 +9,13 @@
 #    b) If seq(i) > 1, then let p = seq(i) (actually prime but not obvious), and for each choice of index j
 #       with 1 < j = kp +/- i <= 50000000, divide at least one factor of p from seq(j) until they are coprime.
 #    c) Else seq(i) = 1, then do nothing.
-# 
+#
 # Lemma: No term t(n) is divisible by 2, 3, or 5.
 # Proof:
 # - For all n, t(n) = 2n^2 - 1 is clearly odd.
 # - Suppose n = {0, 1, 2} mod 3. Then 2n^2 - 1 = {2, 1, 1} mod 3, all of which are nonzero.
 # - Suppose n = {0, 1, 2, 3, 4} mod 5. Then 2n^2 - 1 = {4, 1, 2, 2, 1} mod 5, all of which are nonzero.
-# 
+#
 # Lemma:
 #   If some p (can be prime or composite) divides some term t(n), then p also divides t(kp +/- n) for all k
 #   that produces an in-bounds index; furthermore these are the only indices where the term is divisible by p.
@@ -36,7 +33,7 @@
 #   t(n) = 2n^2 - 1 = 0 - 1 mod p, which contradicts the initial assumption that p divides t(n).
 #   The case j = n mod p is satisfied by j = kp + n for any k. The case j = -n mod p is satisfied by j = kp - n for any k.
 #   Thus if j is of the form kp +/- n and j > 1, these are necessary and sufficient conditions for p to divide t(j).
-# 
+#
 # Lemma: In the algorithm's main loop, for each index i when it is visited, the value seq(i) is either 1 or a prime number.
 # Proof:
 #   For i = (2, 3, 4) this is clearly true since t(i) is prime. Otherwise:
@@ -54,7 +51,7 @@
 #   - Case 2i < p: If seq(i) itself is prime, then there is no problem. Otherwise it would have at least two prime factors
 #     p, q > 2i, but it would mean pq > 4i^2 > 2i^2 (because i > 0) > 2i^2 - 1 = t(i) >= seq(i), which is a contradiction.
 #   Therefore the only non-contradictory case is the one where seq(i) is a prime number.
-# 
+#
 # Credits:
 #   My algorithm and proof were written with major help from this document:
 #   https://code.google.com/archive/p/fun-math-problems/source/default/source?page=15 , p216.tex

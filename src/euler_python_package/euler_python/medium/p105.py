@@ -53,7 +53,9 @@ def is_special_sum_set(s):
             explore_subsets(i + 1, count + 1, sum + s[i])
 
     explore_subsets(0, 0, 0)
-    return len(sumsseen) == 2 ** len(s) and all(maxsum[i] < minsum[i + 1] for i in range(len(s)))
+    return len(sumsseen) == 2 ** len(s) and all(
+        maxsum[i] < minsum[i + 1] for i in range(len(s))
+    )
 
 
 SETS = [

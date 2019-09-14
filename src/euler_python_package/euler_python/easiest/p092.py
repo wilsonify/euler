@@ -16,9 +16,7 @@ def problem092():
 
        How many starting numbers below ten million will arrive at 89?
     """
-    ans = sum(1
-              for i in range(1, 10000000)
-              if get_terminal(i) == 89)
+    ans = sum(1 for i in range(1, 10000000) if get_terminal(i) == 89)
     return ans
 
 

@@ -62,7 +62,7 @@ def is_player1_win(handpair):
     # Parse cards and divide among players
     cards = [parse_card(item) for item in handpair.split(" ")]
     assert len(cards) == 10
-    player1 = cards[: 5]
+    player1 = cards[:5]
     player2 = cards[5:]
     # Compare hand scores
     return get_score(player1) > get_score(player2)

@@ -1,10 +1,10 @@
-
-# 
-# 
 #
 #
-from euler_python.utils import eulerlib
+#
+#
 import sys
+
+from euler_python.utils import eulerlib
 
 
 def problem169():

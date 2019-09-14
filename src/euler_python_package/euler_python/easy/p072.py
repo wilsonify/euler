@@ -1,8 +1,8 @@
-
 #
 #
-from euler_python.utils import eulerlib
 import itertools
+
+from euler_python.utils import eulerlib
 
 
 def problem072():

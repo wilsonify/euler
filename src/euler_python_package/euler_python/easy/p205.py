@@ -1,4 +1,3 @@
-
 def problem205():
     """
 
@@ -27,7 +26,7 @@ def problem205():
 
     ans = 0
     for i in range(len(nine_pyramidal_pdf)):
-        ans += nine_pyramidal_pdf[i] * sum(six_cubic_pdf[: i])
+        ans += nine_pyramidal_pdf[i] * sum(six_cubic_pdf[:i])
     ans = float(ans) / (sum(nine_pyramidal_pdf) * sum(six_cubic_pdf))
     return float("{:.7f}".format(ans))
 

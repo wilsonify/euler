@@ -1,4 +1,3 @@
-
 from euler_python.utils import eulerlib
 
 
@@ -7,11 +6,11 @@ from euler_python.utils import eulerlib
 # Let {p1^k1, p2^k2, ..., {p_m}^{k_m}} be the set of "maximal prime powers".
 # Then all the unitary divisors of n are exactly all the subsets of maximal prime powers,
 # where each subset is viewed as a product of its elements.
-# 
+#
 # For n!, its prime factorization uses and only uses all prime numbers from 1 to n (inclusive).
 # For each prime p, the number n! has exactly floor(n/p) + floor(n/p^2) + floor(n/p^3) + ... factors of p.
 # Thus we can calculate the p's and k's quite easily.
-# 
+#
 # To solve the remaining parts of the problem, we use dynamic programming.
 # Suppose we have found all the unitary divisors that are products of maximal prime powers less than {p_i}^{k_i},
 # and suppose this set is {a, b, c}. Then when we include {p_i}^{k_i} into consideration, we double the size of the set

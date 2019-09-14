@@ -55,7 +55,9 @@ def problem061():
                 if (sidesused >> outsides) & 1 != 0:
                     continue
                 for number in numbers[outsides][current % 100]:
-                    temperature = find_solution_sum(begin, number, sidesused | (1 << outsides), summation + number)
+                    temperature = find_solution_sum(
+                        begin, number, sidesused | (1 << outsides), summation + number
+                    )
                     if temperature is not None:
                         return temperature
             return None

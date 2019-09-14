@@ -1,16 +1,15 @@
-
-
 #
 #
-from euler_python.utils import eulerlib
 import heapq
+
+from euler_python.utils import eulerlib
 
 
 # Finding all the relatives of 2 can be seen as a single-source shortest path problem,
 # which we solve here using Dijkstra's algorithm. The key insight is that at each node (prime number),
 # we consider the connection path from 2 to it, and store the maximum path number at the node.
 # It is amenable to dynamic programming because it's always best to minimize the maximum path number.
-# 
+#
 # For example, 2 is connected to 103 because 2 <-> 3 <-> 13 <-> 113 <-> 103.
 # The maximum number along this path is 113, and among all paths
 # this is the minimum possible maximum, so 103 is not a relative of 2.
@@ -45,12 +44,19 @@ def problem425():
                 tempdigits[i] = j
                 m = to_number(tempdigits)
                 nextpmax = max(m, pmax)
-                if m < len(isprime) and isprime[m] and (pathmax[m] is None or nextpmax < pathmax[m]):
+                if (
+                        m < len(isprime)
+                        and isprime[m]
+                        and (pathmax[m] is None or nextpmax < pathmax[m])
+                ):
                     heapq.heappush(queue, (nextpmax, m))
             tempdigits[i] = digits[i]  # Restore the digit
 
-    ans = sum(i for i in range(len(isprime))
-              if isprime[i] and (pathmax[i] is None or pathmax[i] > i))
+    ans = sum(
+        i
+        for i in range(len(isprime))
+        if isprime[i] and (pathmax[i] is None or pathmax[i] > i)
+    )
     return ans
 
 

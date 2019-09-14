@@ -1,4 +1,3 @@
-
 import itertools
 
 
@@ -8,7 +7,7 @@ import itertools
 # - If n divides m!, then n also divides (m+1)!, (m+2)!, etc. (i.e. all factorials after m).
 #   Thus a possible strategy is to find lower bounds for m, and refine our way up to the real answer.
 # We begin by factorizing n as a product of powers of unique prime numbers: n = p_0^k_0 * p_1^k^1 * ... .
-# 
+#
 # Now for each index i in this product, look at the prime power p_i^k_i.
 # There is some smallest j such that j! is divisible by p_i^k_i.
 # We argue this j must be a multiple of p_i. This is because if j is not a multiple of p_i,
@@ -16,19 +15,19 @@ import itertools
 # Or to look at it another way, as j increases, the value j! gains new copies of the factor p_i
 # every time j's factorization contains p_i. (For example if we are interested in p = 2, then
 # 2 = 2 (has 1 copy of 2), 4 = 2 * 2 (has 2 copies), 6 = 2 * 3 (has 1 copy), 8 = 2 * 2 * 2 (has 3 copies).)
-# 
+#
 # For each index i in the prime factorization, we compute the smallest j such that p_i^k_i divides j!.
 # We argue that the maximum among all these j's is the answer m = s(n).
 # By construction, every p_i^k_i divides this m! and m! > 0. Because all these p_i^k_i's are pairwise coprime,
 # by the Chinese remainder theorem, {the product of all these p_i^k_i's} also divides m!.
-# 
+#
 # One consequence is that if n contains a big prime factor p, then m must be at least p.
 # This is because otherwise if m < p, then m! will not contain a factor of p.
 # For example if n = 245262 = 2 * 3 * 41 * 997, then s(n) >= 997. In fact s(n) = 997.
-# 
+#
 # With this derivation in hand, we can work backwards, starting from primes
 # and figuring out the smallest divisible factorial for each number.
-# 
+#
 # Let's look at p = 2, the smallest prime number. Every number that is a multiple of 2 (including 2 itself)
 # will be affected by how many copies of 2 are in the factorization of some factorial.
 # - First we look at j = p = 2. The factorization of j! = 2! has 1 copy of 2. So we know that every number
@@ -63,7 +62,9 @@ def problem549():
 
                 # Update answer for all multiples of 'power'
                 for k in range(power, len(smallestdivisiblefactorials), power):
-                    smallestdivisiblefactorials[k] = max(j, smallestdivisiblefactorials[k])
+                    smallestdivisiblefactorials[k] = max(
+                        j, smallestdivisiblefactorials[k]
+                    )
 
                 # Update power to include the remaining factors of i in j
                 temp = j // i

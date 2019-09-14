@@ -1,4 +1,3 @@
-
 from euler_python.utils import eulerlib
 
 
@@ -17,7 +16,11 @@ def problem231():
                 j //= p
         return result
 
-    ans = factorial_prime_factor_sum(N) - factorial_prime_factor_sum(K) - factorial_prime_factor_sum(N - K)
+    ans = (
+            factorial_prime_factor_sum(N)
+            - factorial_prime_factor_sum(K)
+            - factorial_prime_factor_sum(N - K)
+    )
     return ans
 
 

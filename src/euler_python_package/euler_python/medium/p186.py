@@ -1,4 +1,3 @@
-
 def problem186():
     ds = DisjointSet(1000000)
     rand = LfgRandom()
@@ -13,7 +12,6 @@ def problem186():
 
 
 class DisjointSet(object):
-
     def __init__(self, size):
         self.nodes = [DisjointSet.Node() for _ in range(size)]
 
@@ -49,7 +47,6 @@ class DisjointSet(object):
 
 
 class LfgRandom(object):
-
     def __init__(self):
         self.k = 1
         self.history = [0] * 55

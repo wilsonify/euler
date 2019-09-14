@@ -1,4 +1,3 @@
-
 import itertools
 
 import math
@@ -63,7 +62,8 @@ def problem086():
             if c * c == min(
                     (x + y) * (x + y) + z * z,
                     (y + z) * (y + z) + x * x,
-                    (z + x) * (z + x) + y * y):
+                    (z + x) * (z + x) + y * y,
+            ):
                 temp = max(x, y, z)
                 if temp < limit:
                     # Add canonical solution
@@ -86,7 +86,7 @@ def problem086():
             sum = cumulativesolutions[i - 1] + len(solutions[i])
             cumulativesolutions.append(sum)
             if sum > 1000000:
-                return (i)
+                return i
 
         # Raise the limit and keep searching
         limit *= 2

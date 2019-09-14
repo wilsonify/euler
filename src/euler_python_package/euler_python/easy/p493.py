@@ -2,7 +2,6 @@
 problem 493
 """
 import fractions
-
 import math
 
 from euler_python.utils import eulerlib

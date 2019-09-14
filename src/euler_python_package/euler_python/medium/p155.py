@@ -1,6 +1,3 @@
-
-
-
 # Warning: Running this solution requires about 1 GiB of memory
 import math
 
@@ -30,7 +27,7 @@ def problem155():
                     poss.add((numerprod // npgcd, pseudosum // npgcd))  # Series
         possible.append(poss)
         all.update(poss)
-    return (len(all))
+    return len(all)
 
 
 if __name__ == "__main__":

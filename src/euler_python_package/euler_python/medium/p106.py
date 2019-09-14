@@ -1,4 +1,3 @@
-
 from euler_python.utils import eulerlib
 
 
@@ -32,8 +31,8 @@ from euler_python.utils import eulerlib
 #   This confirms some values mentioned in the problem statement:
 #   - Set size n = 7 has 966 subset pairs.
 #   - Set size n = 12 has 261625 subset pairs.
-# 
-# 
+#
+#
 # Main theorem:
 #   Let A be an arbitrary set such that all of the following hold:
 #   - Its size is n.
@@ -45,30 +44,30 @@ from euler_python.utils import eulerlib
 #   Then we claim that exactly this many pairs need to be tested for equality:
 #   The summation of (n choose 2k) * [(2k choose k) / 2 - (2k choose k) / (k + 1)]
 #   for k from 2 to floor(n / 2) (inclusive).
-# 
+#
 # Proof:
 #   We begin by arguing about what subset pairs don't need to be tested,
 #   then progress to counting which subset pairs do and don't need to be tested.
-#   
+#
 #   Let B and C be an arbitrary pair of non-empty disjoint subsets of A.
 #   Furthermore, restrict the pair  (and prevent duplicate counting) so that
 #   the smallest element of B is smaller than the smallest element of C.
 #   Assume that for each element of B and C, we know what index of A
 #   it comes from, but we don't look at the actual element's value.
-#   
+#
 #   If sets B and C have different sizes, then property (ii) implies that
 #   either S(B) < S(C) or S(B) > S(C), which in both cases imply S(B) != S(C).
 #   Hence we only care about the cases where |B| = |C|.
-#   
+#
 #   If |B| = |C| = 1, then we know by disjointness that S(B) != S(C).
 #   (Namely because each set has a different singleton element.)
-#   
+#
 #   For the interesting case, we have |B| = |C| >= 2. If we can match each
 #   element of B to a unique larger element in C, then we know for sure that
 #   S(B) < S(C), which further implies that S(B) != S(C). When we find such
 #   a matching, the ordering of the elements of A already implies inequality,
 #   without the need to examine the actual element values.
-#   
+#
 #   To illustrate with a concrete example, suppose B = {a0,a1} and C = {a2,a3}
 #   are subsets of some set A. For each element of the set B or C, we are
 #   assumed to know what index of A the element came from. Because we know
@@ -77,7 +76,7 @@ from euler_python.utils import eulerlib
 #   C = {a1,a3}, we have a0 < a1 and a2 < a3, leading to a0 + a2 < a1 + a3.
 #   But in the case of B = {a0,a3} and C = {a1,a2}, we cannot conclude
 #   whether S(B) equals S(C) without examining the actual element values.
-#   
+#
 #   Let's imagine scanning the elements of A in ascending order. When we
 #   encounter an element a_i that is:
 #   - In B, then we push it onto a stack, remembering that we need to
@@ -86,15 +85,15 @@ from euler_python.utils import eulerlib
 #     element cannot be paired with an earlier (and thus smaller) element that
 #     is in B, so no match exists. Otherwise we pop one element from the stack.
 #   - Not in B or C, then we ignore it because it plays no role in the sums.
-#   
+#
 #   Suppose we lay out the elements of A as a sequence, and label each element
 #   according to the subsets B and C in a particular way. If element a_i is in B,
 #   then label it as ( (left parenthesis). If element a_i is in C, then label it
 #   as ) (right parenthesis). Otherwise label it as nothing/space.
-#   
+#
 #   To illustrate, suppose A has size 5, B = {a0,a1}, and C = {a2,a3}.
 #   Then this pair of subsets corresponds with the label "(( ))" on A.
-#   
+#
 #   We can see that a pair of subsets doesn't need to be tested if
 #   its label corresponds to a string of balanced parentheses. This is
 #   a well-known combinatorics problem (which I won't try to prove):
@@ -102,25 +101,25 @@ from euler_python.utils import eulerlib
 #   number of ways that k pairs of parentheses can be arranged in a
 #   sequence to produce a proper expression (i.e. no prefix contains
 #   more right parentheses than left parentheses).
-#   
+#
 #   There are (n choose 2k) ways to choose elements from A that will
 #   then be split among the subsets B and C. Focus on one arbitrary choice.
-#   
+#
 #   Subsequently, there are (2k choose k) / 2 ways to put k of those
 #   elements into B and k of those elements into C, but without
 #   regards to the ordering of B and C.
-#   
+#
 #   However, C_k = (2k choose k) / (k + 1) of those choices of subset
 #   pairs will necessarily have unequal sums due to the ordering of
 #   elements, hence they don't need to be tested.
-#   
+#
 #   This means that for a given k >= 2, we need to test (n choose 2k)
 #   * ((2k choose k) / 2 - (2k choose k) / (k + 1)) subset pairs.
-#   
+#
 #   Finally, we sum this term for k = 2, 3, 4, ... as long as 2k <= n,
 #   so that we consider all the sizes of k where we can take a pair
 #   of k-sized disjoint subsets of A.
-#   
+#
 # Corollary:
 #   Although the derivation/justification is long, the amount of
 #   arithmetic is small enough to be doable by hand calculation.
@@ -130,8 +129,11 @@ def problem106():
     def catalan(n):
         return eulerlib.binomial(n * 2, n) // (n + 1)
 
-    ans = sum(eulerlib.binomial(SET_SIZE, i * 2) * (eulerlib.binomial(i * 2, i) // 2 - catalan(i))
-              for i in range(2, SET_SIZE // 2 + 1))
+    ans = sum(
+        eulerlib.binomial(SET_SIZE, i * 2)
+        * (eulerlib.binomial(i * 2, i) // 2 - catalan(i))
+        for i in range(2, SET_SIZE // 2 + 1)
+    )
     return ans
 
 

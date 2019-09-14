@@ -21,10 +21,7 @@ def problem063():
     We handle the rest of the testing by brute force.
 
     """
-    ans = sum(1
-              for i in range(1, 10)
-              for j in range(1, 22)
-              if len(str(i ** j)) == j)
+    ans = sum(1 for i in range(1, 10) for j in range(1, 22) if len(str(i ** j)) == j)
     return ans
 
 

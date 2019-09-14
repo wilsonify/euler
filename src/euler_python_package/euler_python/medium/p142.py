@@ -1,10 +1,10 @@
-
-# 
-# 
 #
 #
-from euler_python.utils import eulerlib
+#
+#
 import itertools
+
+from euler_python.utils import eulerlib
 
 
 def problem142():
@@ -19,7 +19,9 @@ def problem142():
             if a * a >= limit:
                 break
             for b in reversed(range(1, a)):
-                if (a + b) % 2 != 0:  # Need them to be both odd or both even so that we get integers for x and y
+                if (
+                        a + b
+                ) % 2 != 0:  # Need them to be both odd or both even so that we get integers for x and y
                     continue
                 x = (a * a + b * b) // 2
                 y = (a * a - b * b) // 2
@@ -51,7 +53,7 @@ def problem142():
     while True:
         summation = find_sum(sumlimit)
         if summation is None:  # No smaller summation found
-            return (sumlimit)
+            return sumlimit
         sumlimit = summation
 
 

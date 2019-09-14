@@ -1,4 +1,3 @@
-
 from euler_python.utils import eulerlib
 
 
@@ -12,7 +11,7 @@ def problem123():
     for n in range(5, len(primes), 2):
         rem = n * primes[n - 1] * 2
         if rem > 10000000000:
-            return (n)
+            return n
 
 
 if __name__ == "__main__":

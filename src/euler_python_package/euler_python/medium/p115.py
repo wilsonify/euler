@@ -1,11 +1,10 @@
-
 import itertools
 
 
 # How many ways can a row n units long be filled, where red blocks are
 # at least m units long? Denote this quantity as ways[n].
 # Compute n = 0 manually as a base case.
-# 
+#
 # Now assume n >= 1. Look at the leftmost item and sum up the possibilities.
 # - If the item is a black square, then the rest of the row is allowed
 #   to be anything of length n-1. Add ways[n-1].
@@ -23,7 +22,7 @@ def problem115():
             s += 1
         ways.append(s)
         if s > 1000000:
-            return (n)
+            return n
 
 
 if __name__ == "__main__":

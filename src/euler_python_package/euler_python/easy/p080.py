@@ -1,4 +1,3 @@
-
 from euler_python.utils import eulerlib
 
 
@@ -20,9 +19,10 @@ def problem080():
     digits = 100
     multiplier = 100 ** digits
     ans = sum(
-        sum(int(c) for c in str(eulerlib.sqrt(i * multiplier))[: digits])
+        sum(int(c) for c in str(eulerlib.sqrt(i * multiplier))[:digits])
         for i in range(100)
-        if eulerlib.sqrt(i) ** 2 != i)
+        if eulerlib.sqrt(i) ** 2 != i
+    )
     return ans
 
 

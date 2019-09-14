@@ -1,6 +1,3 @@
-
-
-
 def problem150():
     # Generate the triangle
     ROWS = 1000
@@ -37,6 +34,7 @@ def compute_plain(triangle):
 def compute_numpy(triangle):
     # Calculate cumulative sums for each row
     import numpy
+
     ROWS = len(triangle)
     rowsums = numpy.zeros([ROWS, ROWS + 2], dtype=numpy.int64)
     for (i, row) in enumerate(triangle):
